@@ -1,0 +1,195 @@
+$panelTopImg: 'top-bottom.jpg';
+$panelRightImg: 'front-back-sides.jpg';
+$panelBottomImg: $panelTopImg;
+$panelLeftImg: $panelRightImg;
+$panelBackImg: $panelRightImg;
+
+$panelTopBackground: (
+  img: 'top-bottom.jpg',
+  shadow: true,
+  size: cover,
+  color: blue
+);
+
+
+@function black($alpha: 1) {
+    @return (rgba(0, 0, 0, $alpha))
+}
+
+$imgPath: '../img/';
+
+@function loadImg($img){
+	@return url(#{$imgPath + $img});
+} 
+
+@mixin background($data) {
+
+	$color:'';
+background-image: loadImg(foo);
+
+	@if(map-has-key($data, 'color')){
+		background-color: map-get($data, 'color');
+	}
+
+	$image: '';
+
+	@if(not map-has-key($data, 'shadow') or map-get($data, 'shadow') == true ){
+		$image: 'xx';
+	}
+
+	@if(not map-has-key($data, 'img')){
+		bar: loadImg(foo);
+	}
+	@if(map-has-key($data, 'shadow')){
+		barx: y;
+	}
+
+}
+
+foo {
+	@include background($panelTopBackground);
+}
+
+// .paternoster-box {
+// 	@include aspect-ratio($canvasMaxX, $canvasMaxY);
+// 	margin: auto;
+// 	max-width: $canvasMaxX * 1px;
+//     overflow:hidden;
+
+//     .paternoster {
+// 	    @include flex-container();
+// 	    [class^="lift-"], [class*=" lift-"] {
+// 		    @include simple-flex-box(widthPerc($cageOuterWidth, $canvasMaxX));
+
+// 			.cage-frame {
+// 				background-image:linear-gradient(180deg, white(.3), white(.2)), url(../img/front-back-sides.jpg);
+// 				background-size: contain;
+// 				width: 100%;
+// 				height: 100%;
+// 	    		padding: widthPerc($cageMaterialThickness, $cageOuterWidth);
+// 	    		position: relative;	    
+// 	    		//box-shadow: 2px 2px 2px 2px black(.3);		
+// 	    		&::before, &::after {
+// 	    			content:'';
+// 	    			position: absolute;
+// 	    			left: widthPerc($cageMaterialThickness, $cageOuterWidth);
+// 	    			width: widthPerc($cageInnerWidth, $cageOuterWidth);
+// 	    			// while this works it should actually bot be divided by 2
+// 	    			height: widthPerc($cageMaterialThickness / 2, $cageOuterWidth);
+// 	    			z-index: 2;
+// 	    			border-left: 1px black(.7) solid;
+// 	    			border-right: 1px black(.7) solid;
+// 	    		}
+// 	    		&::before {
+// 	    			top: 0;
+// 	    			background-image: linear-gradient(0deg, white(.3), white(.3)), url(../img/top-bottom.jpg);
+// 	    		}
+// 	    		&::after {
+// 	    			bottom: 0;
+// 	    			background-image: linear-gradient(0deg, white(.2), white(.2)), url(../img/top-bottom.jpg);
+// 	    		}
+   	
+//    		@include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
+//       	animation: pnMoveDownPersp 10s linear infinite;
+
+// 			}
+// 	    }
+
+// 	    .lift-left {
+// 	    	margin-right: (100 - ($cageOuterWidth * 100 / $canvasMaxX) * 2) * 1%;
+// 			.cage-frame {
+// 				&:first-of-type {
+// 					margin-top: 0%;
+//       				//animation: pnMoveUp 10s linear infinite;
+// 				}
+// 			}
+// 	    }	    
+
+// 	    .lift-right {
+// 			.cage-frame {
+// 				&:first-of-type {
+// 					margin-top: 0;
+//       				//animation: pnMoveDown 10s linear infinite;
+// 				}
+// 			}
+// 	    }
+// 	}
+
+//     .cage {   
+//     	height: 100%;
+//     	width: 100%;
+// 		background: #efefef;
+
+//    		@include vendor-prefix(perspective, 800px, property, (-webkit-, ''));
+//    		@include vendor-prefix(transform-style, preserve-3d, property, (-webkit-, ''));  
+//    		@include vendor-prefix(backface-visibility, visible, property, (-webkit-, ''));     	
+//    	//	@include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
+//         [class^='panel-'], [class*=' panel-'] { 
+
+// 	    	position: relative;
+    	
+// 	    	display: block;
+// 	    	position: absolute;
+// 	    	width: 100%;
+// 	    	background-size: cover;
+// 	    	border: 1px black(.2) solid;
+
+// 			&.panel-vertical {
+// 				height: 100%;
+// 				&.panel-right {					
+//       	        	background-image: linear-gradient(135deg, black(.68), transparent), url(../img/front-back-sides.jpg);
+// 	    			border-right-color: black(.7);
+// 				}
+// 				&.panel-left {				
+//       	        	background-image: linear-gradient(-135deg, black(.68), transparent), url(../img/front-back-sides.jpg);
+// 	    			border-left-color: black(.7);
+// 				}
+// 				&.panel-back {		
+//       	        	background-image: linear-gradient(180deg, black(.68), transparent), url(../img/front-back-sides.jpg);
+// 				}
+// 			} 
+
+// 			&.panel-horizontal {
+// 				width: 100%;
+// 				// on given 
+// 				height: widthPerc($cageInnerWidth, $cageInnerHeight);
+// 				&.panel-top {
+// 					background-image: linear-gradient(0deg, black(.68), black(.2)), url(../img/top-bottom.jpg);
+// 				}
+// 				&.panel-bottom {					
+// 					background-image: linear-gradient(180deg, black(.2), transparent), url(../img/top-bottom.jpg);
+// 				}
+// 			} 
+
+
+// 			&.panel-back {
+// 			   @include vendor-prefix(transform, rotateY(180deg) translateZ($cageDepth * 1px), property, (-webkit-, ''));
+// 			}
+
+// 			&.panel-right {
+// 			   @include vendor-prefix(transform-origin, right center, property, (-webkit-, ''));
+// 			   @include vendor-prefix(transform, rotateY(-90deg), property, (-webkit-, ''));
+// 			}
+
+// 			&.panel-left {
+// 			   @include vendor-prefix(transform-origin, left center, property, (-webkit-, ''));
+// 			   @include vendor-prefix(transform, rotateY(90deg), property, (-webkit-, ''));
+// 			}
+
+// 			&.panel-top {
+// 			   @include vendor-prefix(transform-origin, top center, property, (-webkit-, ''));
+// 			   @include vendor-prefix(transform, rotateX(-90deg), property, (-webkit-, ''));
+// 			}
+
+// 			&.panel-bottom {
+// 			   top: auto;
+// 			   bottom: 0;
+// 			   @include vendor-prefix(transform-origin, bottom center, property, (-webkit-, ''));
+// 			   @include vendor-prefix(transform, rotateX(90deg), property, (-webkit-, ''));
+// 			}
+// 		}
+
+//     }
+// }
+
+
