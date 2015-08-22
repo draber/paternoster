@@ -1,0 +1,580 @@
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-size: 62.5%;
+  line-height: 1.4;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: ThreeDHighlight;
+}
+
+html *, html *:before, html *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, html body {
+  color: #222;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100%;
+  z-index: 0;
+  line-height: 1.4;
+  background: white;
+  border-width: 1px;
+}
+html address, html article, html aside, html audio, html blockquote, html dd, html div, html dl, html fieldset, html figcaption, html figure, html footer, html form, html h1, html h2, html h3, html h4, html h5, html h6, html header,
+html hr, html noscript, html ol, html output, html p, html pre, html section, html summary, html ul, html main {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  white-space: normal;
+}
+html h1 {
+  font-size: 2rem;
+  margin: 0.67rem 0;
+}
+html h2 {
+  font-size: 1.5rem;
+  margin: 0.83rem 0;
+}
+html h3 {
+  font-size: 1.17rem;
+  margin: 1rem 0;
+}
+html h4 {
+  font-size: 1rem;
+  margin: 1.33rem 0;
+}
+html h5 {
+  font-size: 0.83rem;
+  margin: 1.67rem 0;
+}
+html h6 {
+  font-size: 0.67rem;
+  margin: 2.33rem 0;
+}
+html blockquote {
+  margin: 1rem 40px;
+}
+html blockquote, html dd, html dl, html fieldset, html figure, html h1, html h2, html h3, html h4, html h5, html h6,
+html hr, html ol, html p, html pre, html ul {
+  display: block;
+  margin-bottom: 10px;
+  white-space: normal;
+}
+html h1, html h2, html h3, html h4, html h5, html h6 {
+  font-weight: normal;
+  font-style: normal;
+}
+html iframe {
+  border: none;
+}
+html audio,
+html canvas,
+html video,
+html svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+html a {
+  cursor: pointer;
+  background: transparent;
+  text-decoration: none;
+  outline: 0;
+  color: whiten(#0e5d91, 0.2);
+}
+html a:focus {
+  outline: thin dotted;
+}
+html a:hover {
+  text-decoration: underline;
+  color: #0e5d91;
+}
+html a:hover:before, html a:hover:after {
+  text-decoration: none !important;
+}
+html a.block {
+  color: #222;
+  text-decoration: none;
+  display: block;
+}
+html a[rel="external"] span.icon-external:before {
+  font-size: 1.1rem;
+  padding: 0 0 0 4px;
+  position: relative;
+  top: 1px;
+}
+html abbr[title] {
+  border-bottom: 1px dotted;
+}
+html b, html .b, html strong, html .strong {
+  font-weight: bold;
+}
+html i, html .i, html em, html .em, html dfn {
+  font-style: italic;
+}
+html code, html pre, html kdb, html samp {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  font-size: 1.4rem;
+}
+html pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+html code {
+  background: whiten(#e4ecef, 0.5);
+  padding: 2px 6px;
+  display: inline-block;
+  margin: 0 3px;
+  border-radius: 2px;
+}
+html hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+html q {
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+html q:before, html q:after {
+  content: '';
+  content: none;
+}
+html small {
+  font-size: 1.1rem;
+}
+html sub,
+html sup {
+  font-size: .75rem;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+html sup {
+  top: -0.5rem;
+}
+html sub {
+  bottom: -0.25rem;
+}
+html img {
+  border: 0;
+  max-width: 100%;
+}
+html svg:not(:root) {
+  overflow: hidden;
+}
+html fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+html legend {
+  border: 0;
+  padding: 0;
+}
+html textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: vertical;
+}
+html label, html button {
+  cursor: pointer;
+}
+html button {
+  vertical-align: middle;
+  outline: 0;
+  overflow: visible;
+  border: none;
+}
+html button::-moz-focus-inner, html input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+html button,
+html input,
+html select,
+html textarea {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: normal;
+  line-height: normal;
+  text-transform: none;
+  vertical-align: baseline;
+}
+html button,
+html html input[type="button"],
+html input[type="reset"],
+html input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+html input {
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 1px;
+}
+html input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+html input[type="search"]::-webkit-search-cancel-button, html input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+html input[type="checkbox"], html input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+html select {
+  max-width: 100%;
+}
+html audio:not([controls]),
+html [hidden], html template,
+html .hidden, html .deleted,
+html .js, html .js-hide {
+  display: none !important;
+}
+html .visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+html .visuallyhidden.focusable:active, html .visuallyhidden.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
+}
+html .invisible {
+  visibility: hidden;
+}
+html .viewport-hidden {
+  position: absolute;
+  left: -10000px;
+  top: -10000px;
+}
+html .clearfix:before, html .clearfix:after {
+  content: " ";
+  display: table;
+}
+html .clearfix:after {
+  clear: both;
+}
+html .clear {
+  display: block;
+  clear: both;
+}
+html .lft {
+  display: inline;
+  float: left;
+}
+html .rgt {
+  display: inline;
+  float: right;
+}
+html .txt-ctr {
+  text-align: center;
+}
+html .txt-lft {
+  text-align: left;
+}
+html .txt-rgt {
+  text-align: right;
+}
+html .txt-jty {
+  text-align: justify;
+}
+html .txt-underline {
+  text-decoration: underline;
+  font-size: inherit;
+}
+html ::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+html ::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+html .placeholder {
+  color: #777 !important;
+}
+html ::-webkit-input-placeholder {
+  color: #777 !important;
+}
+html :-moz-placeholder {
+  color: #777 !important;
+}
+html ::-moz-placeholder {
+  color: #777 !important;
+}
+html .truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+html .disabled, html *:disabled {
+  cursor: default;
+  opacity: .7;
+}
+html .overlay, html .ui-widget-overlay {
+  background: rgba(255, 255, 255, 0.9);
+}
+html .ui-widget {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.4rem !important;
+}
+html .ui-widget .ui-widget {
+  font-size: 1.4rem !important;
+}
+html .ui-widget input, html .ui-widget select, html .ui-widget textarea, html .ui-widget button {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-size: 1.4rem !important;
+}
+
+html body {
+  background: url(../img/wall.jpg);
+}
+
+@-webkit-keyframes pnMoveUp {
+  0% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: -358.68132%;
+  }
+}
+@keyframes pnMoveUp {
+  0% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: -358.68132%;
+  }
+}
+@-webkit-keyframes pnMoveDown {
+  0% {
+    margin-top: -358.68132%;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@keyframes pnMoveDown {
+  0% {
+    margin-top: -358.68132%;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+@-webkit-keyframes pnMoveDownPersp {
+  0% {
+    -webkit-perspective-origin: 50% 25%;
+    perspective-origin: 50% 25%;
+  }
+  100% {
+    -webkit-perspective-origin: 50% 100%;
+    perspective-origin: 50% 100%;
+  }
+}
+@keyframes pnMoveDownPersp {
+  0% {
+    -webkit-perspective-origin: 50% 25%;
+    perspective-origin: 50% 25%;
+  }
+  100% {
+    -webkit-perspective-origin: 50% 100%;
+    perspective-origin: 50% 100%;
+  }
+}
+.paternoster-box {
+  position: relative;
+  margin: auto;
+  max-width: 900px;
+  overflow: hidden;
+}
+.paternoster-box:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 88.88889%;
+}
+.paternoster-box > .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.paternoster-box .paternoster {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-direction: row;
+  direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-content: flex-start;
+  align-content: flex-start;
+  flex-align: stretch;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+}
+.paternoster-box .paternoster [class^="lift-"], .paternoster-box .paternoster [class*=" lift-"] {
+  -ms-order: 0;
+  -webkit-order: 0;
+  order: 0;
+  flex-item-align: stretch;
+  -ms-flex-item-align: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+  -ms-flex: 0 0 42.12963%;
+  -webkit-flex: 0 0 42.12963%;
+  flex: 0 0 42.12963%;
+}
+.paternoster-box .paternoster [class^="lift-"] .cage-frame, .paternoster-box .paternoster [class*=" lift-"] .cage-frame {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)), url(../img/front-back-sides.jpg);
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+  padding: 2.63736%;
+  position: relative;
+  -webkit-perspective-origin: 50% 50%;
+  perspective-origin: 50% 50%;
+  animation: pnMoveDownPersp 10s linear infinite;
+}
+.paternoster-box .paternoster [class^="lift-"] .cage-frame::before, .paternoster-box .paternoster [class^="lift-"] .cage-frame::after, .paternoster-box .paternoster [class*=" lift-"] .cage-frame::before, .paternoster-box .paternoster [class*=" lift-"] .cage-frame::after {
+  content: '';
+  position: absolute;
+  left: 2.63736%;
+  width: 94.72527%;
+  height: 1.31868%;
+  z-index: 2;
+  border-left: 1px rgba(0, 0, 0, 0.7) solid;
+  border-right: 1px rgba(0, 0, 0, 0.7) solid;
+}
+.paternoster-box .paternoster [class^="lift-"] .cage-frame::before, .paternoster-box .paternoster [class*=" lift-"] .cage-frame::before {
+  top: 0;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(../img/top-bottom.jpg);
+}
+.paternoster-box .paternoster [class^="lift-"] .cage-frame::after, .paternoster-box .paternoster [class*=" lift-"] .cage-frame::after {
+  bottom: 0;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url(../img/top-bottom.jpg);
+}
+.paternoster-box .paternoster .lift-left {
+  margin-right: 15.74074%;
+}
+.paternoster-box .paternoster .lift-left .cage-frame:first-of-type {
+  margin-top: 0%;
+}
+.paternoster-box .paternoster .lift-right .cage-frame:first-of-type {
+  margin-top: 0;
+}
+.paternoster-box .cage {
+  height: 100%;
+  width: 100%;
+  background: #efefef;
+  -webkit-perspective: 800px;
+  perspective: 800px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+.paternoster-box .cage [class^='panel-'], .paternoster-box .cage [class*=' panel-'] {
+  position: relative;
+  display: block;
+  position: absolute;
+  width: 100%;
+  background-size: cover;
+  border: 1px rgba(0, 0, 0, 0.2) solid;
+}
+.paternoster-box .cage [class^='panel-'].panel-vertical, .paternoster-box .cage [class*=' panel-'].panel-vertical {
+  height: 100%;
+}
+.paternoster-box .cage [class^='panel-'].panel-vertical.panel-right, .paternoster-box .cage [class*=' panel-'].panel-vertical.panel-right {
+  background-image: linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent), url(../img/front-back-sides.jpg);
+  border-right-color: rgba(0, 0, 0, 0.7);
+}
+.paternoster-box .cage [class^='panel-'].panel-vertical.panel-left, .paternoster-box .cage [class*=' panel-'].panel-vertical.panel-left {
+  background-image: linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent), url(../img/front-back-sides.jpg);
+  border-left-color: rgba(0, 0, 0, 0.7);
+}
+.paternoster-box .cage [class^='panel-'].panel-vertical.panel-back, .paternoster-box .cage [class*=' panel-'].panel-vertical.panel-back {
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent), url(../img/front-back-sides.jpg);
+}
+.paternoster-box .cage [class^='panel-'].panel-horizontal, .paternoster-box .cage [class*=' panel-'].panel-horizontal {
+  width: 100%;
+  height: 46.04701%;
+}
+.paternoster-box .cage [class^='panel-'].panel-horizontal.panel-top, .paternoster-box .cage [class*=' panel-'].panel-horizontal.panel-top {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)), url(../img/top-bottom.jpg);
+}
+.paternoster-box .cage [class^='panel-'].panel-horizontal.panel-bottom, .paternoster-box .cage [class*=' panel-'].panel-horizontal.panel-bottom {
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent), url(../img/top-bottom.jpg);
+}
+.paternoster-box .cage [class^='panel-'].panel-back, .paternoster-box .cage [class*=' panel-'].panel-back {
+  -webkit-transform: rotateY(180deg) translateZ(359.16667px);
+  transform: rotateY(180deg) translateZ(359.16667px);
+}
+.paternoster-box .cage [class^='panel-'].panel-right, .paternoster-box .cage [class*=' panel-'].panel-right {
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-transform: rotateY(-90deg);
+  transform: rotateY(-90deg);
+}
+.paternoster-box .cage [class^='panel-'].panel-left, .paternoster-box .cage [class*=' panel-'].panel-left {
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
+  -webkit-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+}
+.paternoster-box .cage [class^='panel-'].panel-top, .paternoster-box .cage [class*=' panel-'].panel-top {
+  -webkit-transform-origin: top center;
+  transform-origin: top center;
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+.paternoster-box .cage [class^='panel-'].panel-bottom, .paternoster-box .cage [class*=' panel-'].panel-bottom {
+  top: auto;
+  bottom: 0;
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,127 @@
+@mixin vendor-prefix($property, $value, $whatToPrefix: property, $prefixes: (-webkit-, -moz-, -ms-, -o-, '')) {
+    @if $whatToPrefix == 'property' {
+        @each $prefix in $prefixes {
+            #{$prefix + $property}: #{$value};
+        }
+    }
+    @else if $whatToPrefix == 'value' {
+        @each $prefix in $prefixes {
+            #{$property}: #{$prefix + $value};
+        }
+    }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+@mixin flex-container($wrapBehavior: nowrap) {
+    // Final Syntax
+    @include vendor-prefix(display, flex, value, (-webkit-, ''));
+
+    @include vendor-prefix(direction, row, property, (-webkit-, ''));
+    @include vendor-prefix(flex-wrap, $wrapBehavior, property, (-webkit-, ''));
+
+    @include vendor-prefix(justify-content, flex-start, property, (-webkit-, ''));
+
+    @include vendor-prefix(align-content, flex-start, property, (-webkit-, ''));
+
+    flex-align: stretch;
+    @include vendor-prefix(align-items, stretch, property, (-webkit-, ''));
+}
+
+@mixin simple-flex-box($width: auto, $minWidth: 1) {
+
+    @include vendor-prefix(order, 0, property, (-ms-, -webkit-, ''));
+    flex-item-align: stretch;
+    -ms-flex-item-align: stretch;
+    @include vendor-prefix(align-self, stretch, property, (-webkit-, ''));
+
+    // if both, min width and width are set, width will win this conflict
+    @if ($width == auto) {
+        @if ($minWidth != 1) {
+            @include vendor-prefix(flex, 1 1 $minWidth, property, (-ms-, -webkit-, ''));
+        }
+        @else {
+            @include vendor-prefix(flex, 1 1 auto, property, (-ms-, -webkit-, ''));
+            // @see https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#Values
+            // for a discussion auto vs. main-size
+            @include vendor-prefix(flex, 1 1, property, (-ms-, -webkit-, ''));
+        }
+    }
+    @else {
+        @include vendor-prefix(flex, 0 0 $width, property, (-ms-, -webkit-, ''));
+    }
+}
+
+
+@mixin simple-border($color: #ddd) {
+    border: 1px solid $color;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+
+
+@function widthPerc($colWidth, $context) {
+    @return ($colWidth * 100 / $context) * 1%
+}
+
+@function remDist($fontSizePx) {
+    @return ($fontSizePx / 10) * 1rem
+}
+
+@function black($alpha: 1) {
+    @return (rgba(0, 0, 0, $alpha))
+}
+
+@function white($alpha: 1) {
+    @return (rgba(255, 255, 255, $alpha))
+}
+
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} { @content };
+    @keyframes #{$name} { @content };
+}
+
+
+@mixin animation($value, $type:'') {
+    $animation: animation;
+    @if $type != '' {
+        $animation:  $animation + '-' + $type;
+    }
+    @include vendor-prefix($animation, $value, property);
+}
+
+@mixin transition($type : all, $duration : 0.5s, $effect : ease-out){
+    @include vendor-prefix($type, $duration, $effect);
+}
+
+@mixin fade($duration: 1s){
+
+    @include keyframes(fade) {
+        0%   {opacity:0;}
+        50%   {opacity:1;}
+        100% {opacity:0;}
+    }
+
+    @include vendor-prefix(animation, fade 1s forwards, property);
+}
+
+@mixin repeat(){
+    @include animation(infinite, iteration-count);
+}
