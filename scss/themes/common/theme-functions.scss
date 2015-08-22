@@ -1,0 +1,156 @@
+@import '../../inc/functions';
+
+
+
+@function getThemeClass($theme){
+	$themeClass: to-lower-case($theme);
+	@return $themeClass;
+}
+
+// everything background
+@function list-implode($separator, $list) {
+	$str: '';
+	$len: length($list) ;
+
+  	@each $item in $list {
+
+    	$i: index($list, $item);  
+    	@if($item != '') {    		
+    		$str: #{$str + $item};
+
+    		@if($i < $len) {  	
+    			$str: #{$str + $separator};
+    		}
+    	}
+  	}
+  	@return $str;
+}
+
+@function getImage($panel){	
+
+	$finalImages: ();
+
+	$image: map-get($panel, 'image');
+	$images: map-get($panel, 'images');
+	$positions: map-get($panel, 'positions');
+	$shadow: map-get($panel, 'shadow');
+
+	@if($image != ''){
+		$images: append($images, $image);
+	}
+
+	@if($shadow != ''){
+		$finalImages: append($finalImages, $shadow);
+	}
+
+	$posLen: length($positions);
+  	@each $image in $images {
+
+    	$i: index($images, $image);    	
+  		$image: url(#{$image});
+  		@if($i <= $posLen) {
+  			$image: $image + ' ' + nth($positions, $i);
+  		}
+
+  		$finalImages: append($finalImages, $image);
+  	}
+
+	@return ( image: list-implode(', ', $finalImages) );
+} 
+
+@function getShadow($side, $panel) {
+
+	$defaultShadows: (
+		right: '135deg, #{black(.68)}, transparent',
+		left: '-135deg, #{black(.68)}, transparent',
+		back: '180deg, #{black(.68)}, transparent',
+		top: '0deg, #{black(.68)}, #{black(.2)}',
+		bottom: '180deg, #{black(.2)}, transparent',
+		front: '',
+		cage-frame: '180deg, #{white(.3)}, #{white(.2)}',
+		top-frame: '0deg, #{white(.3)}, #{white(.3)}',
+		bottom-frame: '0deg, #{white(.2)}, #{white(.2)}',
+	);
+
+	$shadow: '';
+
+	@if(map-get($panel, 'shadow') == true){
+		$shadow: map-get($defaultShadows, $side);
+	}
+	@else if(map-get($panel, 'shadow') != false) {
+		$shadow: map-get($panel, 'shadow');
+	}
+
+
+	@if($shadow != '' and str-index($shadow, 'gradient') == null) {
+		$shadow: linear-gradient(#{$shadow}); 
+	}
+
+	@return ( shadow: $shadow );
+}
+
+@function getSeparator($panel) {
+
+	$position:  map-get($panel, 'position');
+	$size:      map-get($panel, 'size');
+	$separator: map-get($panel, 'separator');
+
+	@if($size != '' and $position == '')	{
+		$position: 'top left'
+	}
+
+	@if($size != '')	{
+		$separator: '/';
+	}
+
+	@return (
+		position: $position,
+		size: $size,
+		separator: $separator
+	);
+}
+
+@function getPanel($side) {
+	$panel: (
+		color: '',
+		image: '',
+		repeat: '',
+		attachment: '',
+		position: '',
+		size: '',
+		origin: '',
+		clip: '',
+		positions: (),
+		images: (),
+		shadow: true,
+		separator: ''
+	);
+	@if(map-has-key($panels, $side)) {		
+		$panel: map-merge($panel, map-get($panels, $side));
+	}
+	$panel:  map-merge($panel, getShadow($side, $panel));
+	$panel:  map-merge($panel, getImage($panel));
+	$panel:  map-merge($panel, getSeparator($panel));
+	@return  $panel;
+}
+
+@mixin background($side) {
+
+	$panel: getPanel($side);
+
+	$background: list-implode(' ', (		
+		map-get($panel, 'color'),
+		map-get($panel, 'image'),
+		map-get($panel, 'repeat'),
+		map-get($panel, 'attachment'),
+		map-get($panel, 'position'),
+		map-get($panel, 'separator'),
+		map-get($panel, 'size'),
+		map-get($panel, 'origin'),
+		map-get($panel, 'clip')
+	));
+
+	@if($background != '') {
+		background: $background;
+	}
+}
