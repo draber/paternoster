@@ -1,0 +1,51 @@
+@import 'config';
+
+@import '../common/theme-functions';
+
+/* Theme: #{$themeName} */
+.paternoster-box {
+    .paternoster {
+	    [class^="lift-"], [class*=" lift-"] {
+			.cage-frame.#{getThemeClass($themeName)} {
+				@include background('cage-frame');	
+	    		&::before {
+					@include background('top-frame');
+	    		}
+	    		&::after {	    			
+					@include background('bottom-frame');
+	    		}
+
+    		    .cage {   
+    		        [class^='panel-'], [class*=' panel-'] { 
+    					&.panel-vertical {
+    						&.panel-right {					
+    		      	        	@include background('right');
+    						}
+    						&.panel-left {				
+    		      	        	@include background('left');
+    						}
+    						&.panel-back {
+    							@include background('back');
+    						}
+    						&.panel-front {
+    							@include background('front');
+    						}
+    					} 
+
+    					&.panel-horizontal {
+    						&.panel-top {
+    							@include background('top');
+    						}
+    						&.panel-bottom {	
+    							@include background('bottom');
+    						}
+    					} 
+    				}
+
+    		    }
+			}
+	    }
+	}
+}
+
+
