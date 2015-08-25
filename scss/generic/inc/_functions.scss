@@ -125,3 +125,21 @@
 @mixin repeat(){
     @include animation(infinite, iteration-count);
 }
+
+@function list-implode($separator, $list) {
+    $str: '';
+    $len: length($list) ;
+
+    @each $item in $list {
+
+        $i: index($list, $item);  
+        @if($item != '') {          
+            $str: #{$str + $item};
+
+            @if($i < $len) {    
+                $str: #{$str + $separator};
+            }
+        }
+    }
+    @return $str;
+}

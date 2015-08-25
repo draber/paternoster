@@ -1,31 +1,5 @@
 @import '../../inc/functions';
 
-
-
-@function getThemeClass($theme){
-	$themeClass: to-lower-case($theme);
-	@return $themeClass;
-}
-
-@function list-implode($separator, $list) {
-	$str: '';
-	$len: length($list) ;
-
-  	@each $item in $list {
-
-    	$i: index($list, $item);  
-    	@if($item != '') {    		
-    		$str: #{$str + $item};
-
-    		@if($i < $len) {  	
-    			$str: #{$str + $separator};
-    		}
-    	}
-  	}
-  	@return $str;
-}
-
-// @todo move everything background to an include file
 @function getImage($panel){	
 
 	$finalImages: ();
