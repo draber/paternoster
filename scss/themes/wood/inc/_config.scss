@@ -1,0 +1,33 @@
+$themeName: 'Wood';
+
+$themeId: 'wood';
+
+$panels: (
+	top: (
+	  image: 'gmx/top-bottom.jpg'
+	),
+	right: (
+	  image: 'gmx/front-back-sides.jpg'
+	),	
+	bottom: (
+	  image: 'gmx/top-bottom.jpg'
+	),
+	left: (
+	  image: 'gmx/front-back-sides.jpg'
+	),
+	back: (
+	  image: 'gmx/front-back-sides.jpg'
+	),
+	front: (
+	),
+	cage-frame: (
+	  image: 'gmx/front-back-sides.jpg',
+	  size: contain
+	),
+	top-frame: (
+	  image: 'gmx/top-bottom.jpg'
+	),
+	bottom-frame: (
+	  image: 'gmx/top-bottom.jpg'
+	),
+);

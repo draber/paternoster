@@ -1,11 +1,11 @@
 [{
-  'id': 'wood',
-  'name': 'Wood',
-  'default': true
+  "id": "wood",
+  "name": "Wood",
+  "default": true
 },{
-  'id': 'brick',
-  'name': 'Brick'
+  "id": "brick",
+  "name": "Brick"
 },{
-  'id': 'burlwood',
-  'name': 'Burlwood'
+  "id": "burlwood",
+  "name": "Burlwood"
 }]

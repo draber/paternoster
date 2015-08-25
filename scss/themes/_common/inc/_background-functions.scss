@@ -1,5 +1,3 @@
-@import '../../inc/functions';
-
 @function getImage($panel){	
 
 	$finalImages: ();
@@ -22,9 +20,9 @@
 
     	$i: index($images, $image);    	
   		$image: url(#{$image});
-  		@if($i <= $posLen) {
-  			$image: $image + ' ' + nth($positions, $i);
-  		}
+  		// @if($i <= $posLen) {
+  		// 	$image: $image + ' ' + nth($positions, $i);
+  		// }
 
   		$finalImages: append($finalImages, $image);
   	}
@@ -34,17 +32,17 @@
 
 @function getShadow($side, $panel) {
 
-	$shadow: '';
+	// $shadow: '';
 
-	@if(map-get($panel, 'shadow') != false) {
-		$shadow: map-get($panel, 'shadow');
-	}
+	// @if(map-get($panel, 'shadow') != false) {
+	// 	$shadow: map-get($panel, 'shadow');
+	// }
 
-	@if($shadow != '' and str-index($shadow, 'gradient') == null) {
-		$shadow: linear-gradient(#{$shadow}); 
-	}
+	// @if($shadow != '' and $shadow != '' andstr-index($shadow, 'gradient') == null) {
+	// 	$shadow: linear-gradient(#{$shadow}); 
+	// }
 
-	@return ( shadow: $shadow );
+	@return ( shadow: '$shadow' );
 }
 
 @function getSeparator($panel) {
@@ -83,8 +81,8 @@
 		shadow: true,
 		separator: ''
 	);
-	@if(map-has-key($defaultPpanels, $side)) {		
-		$panel: map-merge($defaultPpanels, map-get($panels, $side));
+	@if(map-has-key($defaultPanels, $side)) {		
+		$panel: map-merge($defaultPanels, map-get($panels, $side));
 	}
 	@if(map-has-key($panels, $side)) {		
 		$panel: map-merge($panel, map-get($panels, $side));
