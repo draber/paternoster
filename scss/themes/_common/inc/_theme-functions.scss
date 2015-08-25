@@ -62,7 +62,7 @@
 
 	$shadow: '';
 
-	if(map-get($panel, 'shadow') != false) {
+	@if(map-get($panel, 'shadow') != false) {
 		$shadow: map-get($panel, 'shadow');
 	}
 
