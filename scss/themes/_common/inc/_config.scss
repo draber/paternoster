@@ -1,31 +1,44 @@
-$themeName: 'Wood';
-
-$panels: (
+$defaultPanels: (
 	top: (
-	  image: 'img/top-bottom.jpg'
+	  image: 'img/top-bottom.jpg',
+	  shadow: '0deg, #{black(.68)}, #{black(.2)}',
+	  size: cover
 	),
 	right: (
-	  image: 'img/front-back-sides.jpg'
+	  image: 'img/front-back-sides.jpg',
+	  shadow: '135deg, #{black(.68)}, transparent',
+	  size: cover
 	),	
 	bottom: (
-	  image: 'img/top-bottom.jpg'
+	  image: 'img/top-bottom.jpg',
+	  shadow: '180deg, #{black(.2)}, transparent',
+	  size: cover
 	),
 	left: (
-	  image: 'img/front-back-sides.jpg'
+	  image: 'img/front-back-sides.jpg',
+	  shadow: '-135deg, #{black(.68)}, transparent',
+	  size: cover
 	),
 	back: (
-	  image: 'img/front-back-sides.jpg'
+	  image: 'img/front-back-sides.jpg',
+	  shadow: '180deg, #{black(.68)}, transparent',
+	  size: cover
 	),
 	front: (
 	),
 	cage-frame: (
 	  image: 'img/front-back-sides.jpg',
+	  shadow: '180deg, #{white(.3)}, #{white(.2)}',
 	  size: contain
 	),
 	top-frame: (
-	  image: 'img/top-bottom.jpg'
+	  image: 'img/top-bottom.jpg',
+	  shadow: '0deg, #{white(.3)}, #{white(.3)}',
+	  size: cover
 	),
 	bottom-frame: (
-	  image: 'img/top-bottom.jpg'
+	  image: 'img/top-bottom.jpg',
+	  shadow: '0deg, #{white(.2)}, #{white(.2)}',
+	  size: cover
 	),
 );
