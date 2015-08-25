@@ -1,0 +1,11 @@
+[{
+  'id': 'wood',
+  'name': 'Wood',
+  'default': true
+},{
+  'id': 'brick',
+  'name': 'Brick'
+},{
+  'id': 'burlwood',
+  'name': 'Burlwood'
+}]
