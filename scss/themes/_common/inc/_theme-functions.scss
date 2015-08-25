@@ -7,7 +7,6 @@
 	@return $themeClass;
 }
 
-// everything background
 @function list-implode($separator, $list) {
 	$str: '';
 	$len: length($list) ;
@@ -26,6 +25,7 @@
   	@return $str;
 }
 
+// @todo move everything background to an include file
 @function getImage($panel){	
 
 	$finalImages: ();
@@ -60,27 +60,11 @@
 
 @function getShadow($side, $panel) {
 
-	$defaultShadows: (
-		right: '135deg, #{black(.68)}, transparent',
-		left: '-135deg, #{black(.68)}, transparent',
-		back: '180deg, #{black(.68)}, transparent',
-		top: '0deg, #{black(.68)}, #{black(.2)}',
-		bottom: '180deg, #{black(.2)}, transparent',
-		front: '',
-		cage-frame: '180deg, #{white(.3)}, #{white(.2)}',
-		top-frame: '0deg, #{white(.3)}, #{white(.3)}',
-		bottom-frame: '0deg, #{white(.2)}, #{white(.2)}',
-	);
-
 	$shadow: '';
 
-	@if(map-get($panel, 'shadow') == true){
-		$shadow: map-get($defaultShadows, $side);
-	}
-	@else if(map-get($panel, 'shadow') != false) {
+	if(map-get($panel, 'shadow') != false) {
 		$shadow: map-get($panel, 'shadow');
 	}
-
 
 	@if($shadow != '' and str-index($shadow, 'gradient') == null) {
 		$shadow: linear-gradient(#{$shadow}); 
@@ -125,6 +109,9 @@
 		shadow: true,
 		separator: ''
 	);
+	@if(map-has-key($defaultPpanels, $side)) {		
+		$panel: map-merge($defaultPpanels, map-get($panels, $side));
+	}
 	@if(map-has-key($panels, $side)) {		
 		$panel: map-merge($panel, map-get($panels, $side));
 	}
