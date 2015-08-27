@@ -1,0 +1,31 @@
+$themeName: 'Brick';
+$themeId:   'brick';
+
+$panels: (
+	top: (
+		image: 'img/top-bottom.jpg'
+	),
+	right: (
+		image: 'img/front-back-sides.jpg'
+	),	
+	bottom: (
+		image: 'img/top-bottom.jpg'
+	),
+	left: (
+		image: 'img/front-back-sides.jpg'
+	),
+	back: (
+		image: 'img/front-back-sides.jpg'
+	),
+	front: (
+	),
+	cage-frame: (
+		image: 'img/front-back-sides.jpg'
+	),
+	top-frame: (
+		image: 'img/top-bottom.jpg'
+	),
+	bottom-frame: (
+		image: 'img/top-bottom.jpg'
+	),
+);
