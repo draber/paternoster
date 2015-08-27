@@ -1,8 +1,8 @@
-/* Theme: #{$themeId} */
+/* Theme: #{$themeName} */
 .paternoster-box {
     .paternoster {
         [class^="lift-"], [class*=" lift-"] {
-            .cage-frame.#{getThemeClass($themeName)} {
+            .cage-frame.#{$themeId} {
                 @include background('cage-frame');
                 &::before {
                     @include background('top-frame');

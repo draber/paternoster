@@ -1,4 +1,0 @@
-@function getThemeClass($theme){
-	$themeClass: to-lower-case($theme);
-	@return $themeClass;
-}

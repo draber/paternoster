@@ -1,45 +1,53 @@
 // default setup for panels
 $defaultPanels: (
 	top: (
-	  image: 'img/top-bottom.jpg',
-	  shadow: '0deg, #{black(.68)}, #{black(.2)}',
-	  size: cover
+		image: 'img/top-bottom.jpg',
+		shadow: '0deg, #{black(.68)}, #{black(.2)}'
 	),
 	right: (
-	  image: 'img/front-back-sides.jpg',
-	  shadow: '135deg, #{black(.68)}, transparent',
-	  size: cover
+		image: 'img/front-back-sides.jpg',
+		shadow: '135deg, #{black(.68)}, transparent'
 	),	
 	bottom: (
-	  image: 'img/top-bottom.jpg',
-	  shadow: '180deg, #{black(.2)}, transparent',
-	  size: cover
+		image: 'img/top-bottom.jpg',
+		shadow: '180deg, #{black(.2)}, transparent'
 	),
 	left: (
-	  image: 'img/front-back-sides.jpg',
-	  shadow: '-135deg, #{black(.68)}, transparent',
-	  size: cover
+		image: 'img/front-back-sides.jpg',
+		shadow: '-135deg, #{black(.68)}, transparent'
 	),
 	back: (
-	  image: 'img/front-back-sides.jpg',
-	  shadow: '180deg, #{black(.68)}, transparent',
-	  size: cover
+		image: 'img/front-back-sides.jpg',
+		shadow: '180deg, #{black(.68)}, transparent'
 	),
 	front: (
 	),
 	cage-frame: (
-	  image: 'img/front-back-sides.jpg',
-	  shadow: '180deg, #{white(.3)}, #{white(.2)}',
-	  size: contain
+		image: 'img/front-back-sides.jpg',
+		shadow: '180deg, #{white(.3)}, #{white(.2)}',
+		size: contain
 	),
 	top-frame: (
-	  image: 'img/top-bottom.jpg',
-	  shadow: '0deg, #{white(.3)}, #{white(.3)}',
-	  size: cover
+		image: 'img/top-bottom.jpg',
+		shadow: '0deg, #{white(.3)}, #{white(.3)}'
 	),
 	bottom-frame: (
-	  image: 'img/top-bottom.jpg',
-	  shadow: '0deg, #{white(.2)}, #{white(.2)}',
-	  size: cover
+		image: 'img/top-bottom.jpg',
+		shadow: '0deg, #{white(.2)}, #{white(.2)}'
 	),
+);
+
+
+$skeletonPanel: (
+	color: '',
+	image: '',
+	repeat: '',
+	attachment: '',
+	position: '',
+	size: cover,
+	origin: '',
+	clip: '',
+	positions: (),
+	images: (),
+	shadow: ''
 );

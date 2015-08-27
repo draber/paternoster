@@ -1,11 +1,57 @@
-@function getImage($panel){	
+/// Setup a panel
+/// @param {String} $side
+/// @return {Map} $panel
+@function getPanel($side) {
+	 
+	// merge default panel on skeleton
+	$panel: map-merge($skeletonPanel, map-get($defaultPanels, $side));
+
+	// merge custom panel
+	@if(map-has-key($panels, $side)) {		
+		$panel: map-merge($panel, map-get($panels, $side));
+	}
+
+	// execute 
+	$panel: setupShadow($panel);
+	$panel: setupImages($panel);
+	$panel: setupSeparator($panel);
+	@return  $panel;
+}
+
+
+/// Setup the shadow layer
+/// @param {Map} $panel
+/// @return {Map} $panel
+@function setupShadow($panel) {
+
+	$shadow: '';
+
+	@if(map-get($panel, 'shadow') != false) {
+		$shadow: map-get($panel, 'shadow');
+	}
+
+	@if($shadow != '' and str-index($shadow, 'gradient') == null) {
+		$shadow: linear-gradient(#{$shadow}); 
+	}
+
+	$panel: map-merge($panel, ( shadow: $shadow ));
+
+	@return $panel;
+}
+
+
+/// Setup images including shadow layer and multiple positions, if any
+/// @param {Map} $panel
+/// @return {Map} $panel
+@function setupImages($panel){	
 
 	$finalImages: ();
 
 	$image: map-get($panel, 'image');
 	$images: map-get($panel, 'images');
-	$positions: map-get($panel, 'positions');
 	$shadow: map-get($panel, 'shadow');
+	$positions: map-get($panel, 'positions');
+	$posLen: length($positions);
 
 	@if($image != ''){
 		$images: append($images, $image);
@@ -15,41 +61,32 @@
 		$finalImages: append($finalImages, $shadow);
 	}
 
-	$posLen: length($positions);
   	@each $image in $images {
 
     	$i: index($images, $image);    	
   		$image: url(#{$image});
-  		// @if($i <= $posLen) {
-  		// 	$image: $image + ' ' + nth($positions, $i);
-  		// }
+  		@if($i <= $posLen) {
+  			$image: $image + ' ' + nth($positions, $i);
+  		}
 
   		$finalImages: append($finalImages, $image);
   	}
 
-	@return ( image: list-implode(', ', $finalImages) );
+  	$panel: map-remove($panel, 'shadow', 'images', 'positions');
+  	$panel: map-merge($panel, ( image: list-implode(', ', $finalImages) )); 
+
+	@return $panel;
 } 
 
-@function getShadow($side, $panel) {
 
-	// $shadow: '';
-
-	// @if(map-get($panel, 'shadow') != false) {
-	// 	$shadow: map-get($panel, 'shadow');
-	// }
-
-	// @if($shadow != '' and $shadow != '' andstr-index($shadow, 'gradient') == null) {
-	// 	$shadow: linear-gradient(#{$shadow}); 
-	// }
-
-	@return ( shadow: '$shadow' );
-}
-
-@function getSeparator($panel) {
+/// Insert a separator in case there is position and size
+/// @param {Map} $panel
+/// @return {Map} $panel
+@function setupSeparator($panel) {
 
 	$position:  map-get($panel, 'position');
 	$size:      map-get($panel, 'size');
-	$separator: map-get($panel, 'separator');
+	$separator: '';
 
 	@if($size != '' and $position == '')	{
 		$position: 'top left'
@@ -59,40 +96,18 @@
 		$separator: '/';
 	}
 
-	@return (
+  	$panel: map-merge($panel, (
 		position: $position,
 		size: $size,
 		separator: $separator
-	);
+	)); 
+
+	@return $panel;
 }
 
-@function getPanel($side) {
-	$panel: (
-		color: '',
-		image: '',
-		repeat: '',
-		attachment: '',
-		position: '',
-		size: '',
-		origin: '',
-		clip: '',
-		positions: (),
-		images: (),
-		shadow: true,
-		separator: ''
-	);
-	@if(map-has-key($defaultPanels, $side)) {		
-		$panel: map-merge($defaultPanels, map-get($panels, $side));
-	}
-	@if(map-has-key($panels, $side)) {		
-		$panel: map-merge($panel, map-get($panels, $side));
-	}
-	$panel:  map-merge($panel, getShadow($side, $panel));
-	$panel:  map-merge($panel, getImage($panel));
-	$panel:  map-merge($panel, getSeparator($panel));
-	@return  $panel;
-}
 
+/// Generate background value based on configuration
+/// @param {String} $side
 @mixin background($side) {
 
 	$panel: getPanel($side);
