@@ -384,7 +384,7 @@ body {
   -ms-flex: 0 0 42.12963%;
   -webkit-flex: 0 0 42.12963%;
   flex: 0 0 42.12963%;
-  border: 1px solid rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   height: 100%;
 }
 .paternoster ul li u {
@@ -408,14 +408,21 @@ body {
 }
 .paternoster ul li u::before {
   top: 0;
+  border-bottom: 1px rgba(0, 0, 0, 0.3) solid;
 }
 .paternoster ul li u::after {
   bottom: 0;
+  border-top: 1px rgba(0, 0, 0, 0.3) solid;
 }
 .paternoster ul li u s {
   position: absolute;
   width: 100%;
   height: 100%;
+}
+.paternoster ul li u > s {
+  margin-top: -2.63736%;
+  margin-left: -2.63736%;
+  z-index: 3;
 }
 .paternoster ul .asc {
   margin-right: 15.74074%;
@@ -429,7 +436,8 @@ body {
 .paternoster i {
   height: 100%;
   width: 100%;
-  background: #efefef;
+  position: relative;
+  z-index: 4;
   -webkit-perspective: 800px;
   perspective: 800px;
   -webkit-transform-style: preserve-3d;
@@ -441,36 +449,31 @@ body {
   display: block;
   position: absolute;
   width: 100%;
-  border: 1px rgba(0, 0, 0, 0.2) solid;
 }
-.paternoster i b.vertical {
+.paternoster i b.right, .paternoster i b.left, .paternoster i b.back, .paternoster i b.front {
   height: 100%;
 }
-.paternoster i b.vertical.right {
-  border-right-color: rgba(0, 0, 0, 0.7);
-}
-.paternoster i b.vertical.left {
-  border-left-color: rgba(0, 0, 0, 0.7);
-}
-.paternoster i b.horizontal {
+.paternoster i b.top, .paternoster i b.bottom {
   width: 100%;
   height: 46.04701%;
 }
-.paternoster i b.back {
-  -webkit-transform: rotateY(180deg) translateZ(359.16667px);
-  transform: rotateY(180deg) translateZ(359.16667px);
-}
 .paternoster i b.right {
+  border-right-color: rgba(0, 0, 0, 0.7);
   -webkit-transform-origin: right center;
   transform-origin: right center;
   -webkit-transform: rotateY(-90deg);
   transform: rotateY(-90deg);
 }
 .paternoster i b.left {
+  border-left-color: rgba(0, 0, 0, 0.7);
   -webkit-transform-origin: left center;
   transform-origin: left center;
   -webkit-transform: rotateY(90deg);
   transform: rotateY(90deg);
+}
+.paternoster i b.back {
+  -webkit-transform: rotateY(180deg) translateZ(359.16667px);
+  transform: rotateY(180deg) translateZ(359.16667px);
 }
 .paternoster i b.top {
   -webkit-transform-origin: top center;

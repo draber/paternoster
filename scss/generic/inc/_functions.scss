@@ -68,8 +68,12 @@
     border: 1px solid $color;
 }
 
-@function relativeWidth($colWidth, $context) {
-    @return ($colWidth * 100 / $context) * 1%
+@function relativeWidth($colWidth, $context, $isPositive: true) {
+    $value: $colWidth * 100 / $context;
+    @if($isPositive == false) {
+        $value: $value * -1;
+    }
+    @return $value * 1%
 }
 
 @function black($alpha: 1) {

@@ -7,17 +7,20 @@ requirejs.config({
         jquery: 'vendor/jquery-2.1.1-deprecated.min',
         text  : 'vendor/require-plugins/text',
         json  : 'vendor/require-plugins/json',
-        themeManager: 'theme-manager'
+        themeManager: 'theme-manager',
+        paternosterManager: 'paternoster-manager'
     }
 });
 
 
 require([
-	'themeManager'
+	'themeManager',
+    'paternosterManager'
 	], 
-	function(themeManager) {
+	function(themeManager, paternosterManager) {
 
         themeManager.init();
+        var paternoster = paternosterManager.init(document.querySelector('main.paternoster'));
 
         // // just for fun
         // var boxes = [document.querySelector('.c'), document.querySelector('.a')];

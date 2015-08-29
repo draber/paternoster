@@ -1,21 +1,45 @@
 /* Theme: Brick */
-.paternoster-box .paternoster [class^="lift-"] .cage-frame.brick, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)), url(img/front-back-sides.jpg) top left / contain ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick::before, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick::before {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(img/top-bottom.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick::after, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick::after {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url(img/top-bottom.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-right, .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-right, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-right, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-right {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent), url(img/front-back-sides.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-left, .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-left, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-left, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-left {
-    background: linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent), url(img/front-back-sides.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-back, .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-back, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-back, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-back {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent), url(img/front-back-sides.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-front, .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-front, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class^='panel-'].panel-vertical.panel-front, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-vertical.panel-front {
-    background: top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class^='panel-'].panel-horizontal.panel-top, .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-horizontal.panel-top, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class^='panel-'].panel-horizontal.panel-top, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-horizontal.panel-top {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)), url(img/top-bottom.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class^='panel-'].panel-horizontal.panel-bottom, .paternoster-box .paternoster [class^="lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-horizontal.panel-bottom, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class^='panel-'].panel-horizontal.panel-bottom, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.brick .cage [class*=' panel-'].panel-horizontal.panel-bottom {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent), url(img/top-bottom.jpg) top left / cover ; }
+.paternoster ul li u.brick {
+  background:  url(img/front-back-sides.jpg) 0 0 / contain;
+}
+.paternoster ul li u.brick > s {
+  background:  linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+}
+.paternoster ul li u.brick::before {
+  background:  url(img/top-bottom.jpg) 0 0 / cover;
+}
+.paternoster ul li u.brick::after {
+  background:  url(img/cobblestones.jpg) center bottom / cover;
+}
+.paternoster ul li u.brick i b.right {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover;
+}
+.paternoster ul li u.brick i b.right s {
+  background:  linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent);
+}
+.paternoster ul li u.brick i b.left {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover;
+}
+.paternoster ul li u.brick i b.left s {
+  background:  linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent);
+}
+.paternoster ul li u.brick i b.back {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover;
+}
+.paternoster ul li u.brick i b.back s {
+  background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent);
+}
+.paternoster ul li u.brick i b.top {
+  background:  url(img/top-bottom.jpg) 0 0 / cover;
+}
+.paternoster ul li u.brick i b.top s {
+  background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2));
+}
+.paternoster ul li u.brick i b.bottom {
+  background:  url(img/cobblestones.jpg) 0 0 / cover;
+}
+.paternoster ul li u.brick i b.bottom s {
+  background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent);
+}
 
 /*# sourceMappingURL=theme.css.map */
