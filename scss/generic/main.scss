@@ -1,206 +1,158 @@
 @import 'inc/bootstrap';
 @import 'inc/base';
+@import 'inc/keyframes';
 
 
-
-
-html body {
-	background:url(../img/wall.jpg);
+body {
+    background: url(img/wallpaper.gif);
 }
 
+.paternoster {
+    @include aspect-ratio($canvasMaxX, $canvasMaxY);
+    margin: auto;
+    max-width: $canvasMaxX * 1px;
+    overflow: hidden;
 
+    // No point for semantic markup in page that doesn't contain any text.
+    // Thus the meaning of the elements in this context are:
+    // ul = uncanny lift
+    // li = lift side
+    //  u = unit
+    //  i = inner part of a unit
+    //  b = board
+    //  s = shadow
+    ul, li, u, i, b, s {
+        display: block;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
 
-$canvasMaxX: 900;
-$canvasMaxY: 800;
+    ul {
+        @include flex-container();
+        li {
+            @include simple-flex-box(relativeWidth($cageOuterWidth, $canvasMaxX));
+            @include simple-border(black(.7));
+            height: 100%;
+            u {
+                width: 100%;
+                height: 100%;
+                padding: relativeWidth($cageMaterialThickness, $cageOuterWidth);
+                position: relative;
+                //box-shadow: 2px 2px 2px 2px black(.3);
+                &::before, &::after {
+                    content: '';
+                    position: absolute;
+                    left: relativeWidth($cageMaterialThickness, $cageOuterWidth);
+                    width: relativeWidth($cageInnerWidth, $cageOuterWidth);
+                    // while this works it should actually bot be divided by 2
+                    height: relativeWidth($cageMaterialThickness / 2, $cageOuterWidth);
+                    z-index: 2;
+                    border-left: 1px black(.7) solid;
+                    border-right: 1px black(.7) solid;
+                }
+                &::before {
+                    top: 0;
+                }
+                &::after {
+                    bottom: 0;
+                }
 
-$cageRatioX: 364;
-$cageRatioY: 768;
+                @include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
+                animation: pnMoveDownPersp 10s linear infinite;
+                s {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
 
-$cageMaterialThickness: 10;
+        .asc {
+            margin-right: (100 - ($cageOuterWidth * 100 / $canvasMaxX) * 2) * 1%;
+            u {
+                &:first-of-type {
+                    margin-top: 0%;
+                    //animation: pnMoveUp 10s linear infinite;
+                }
+            }
+        }
 
-$cageOuterHeight: $canvasMaxY;
-$cageOuterWidth: $cageOuterHeight * $cageRatioX / $cageRatioY;
+        .desc {
+            u {
+                &:first-of-type {
+                    margin-top: 0;
+                    //animation: pnMoveDown 10s linear infinite;
+                }
+            }
+        }
+    }
 
-$cageInnerHeight: $cageOuterHeight - ($cageMaterialThickness * 2);
-$cageInnerWidth: $cageOuterWidth - ($cageMaterialThickness * 2);
+    i {
+        height: 100%;
+        width: 100%;
+        background: #efefef;
 
-$cageDistanceBlockWidth: 0; // same as width!
-$cageDistanceBlockHeight: 280; // same as width?
+        @include vendor-prefix(perspective, 800px, property, (-webkit-, ''));
+        @include vendor-prefix(transform-style, preserve-3d, property, (-webkit-, ''));
+        @include vendor-prefix(backface-visibility, visible, property, (-webkit-, ''));
+        //	@include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
+        b {
+            display: block;
+            position: absolute;
+            width: 100%;
+            border: 1px black(.2) solid;
 
-$cageUnitHeight: $cageOuterHeight + ($cageDistanceBlockHeight * 2);
-$cageDepth: $cageInnerWidth;
+            &.vertical {
+                height: 100%;
+                &.right {
+                    border-right-color: black(.7);
+                }
+                &.left {
+                    border-left-color: black(.7);
+                }
+                &.back {
+                }
+                &.front {
+                }
+            }
 
+            &.horizontal {
+                width: 100%;
+                // on given
+                height: relativeWidth($cageInnerWidth, $cageInnerHeight);
+                &.top {
+                }
+                &.bottom {
+                }
+            }
 
-@include keyframes(pnMoveUp) {
-	0%  {
-		margin-top: 0;
-	//	@include vendor-prefix(perspective-origin, 1% 1%, property, (-webkit-, ''));
-	}
-	100%{
-		margin-top: widthPerc($cageUnitHeight, ($cageOuterWidth * -1));
-	//	@include vendor-prefix(perspective-origin, 100% 100%, property, (-webkit-, ''));
-	}
-}
+            &.back {
+                @include vendor-prefix(transform, rotateY(180deg) translateZ($cageDepth * 1px), property, (-webkit-, ''));
+            }
 
-@include keyframes(pnMoveDown) {
-	0%  {
-		margin-top: widthPerc($cageUnitHeight, ($cageOuterWidth * -1));
-	}
-	100%{
-		margin-top: 0;
-	}
-}
+            &.right {
+                @include vendor-prefix(transform-origin, right center, property, (-webkit-, ''));
+                @include vendor-prefix(transform, rotateY(-90deg), property, (-webkit-, ''));
+            }
 
+            &.left {
+                @include vendor-prefix(transform-origin, left center, property, (-webkit-, ''));
+                @include vendor-prefix(transform, rotateY(90deg), property, (-webkit-, ''));
+            }
 
+            &.top {
+                @include vendor-prefix(transform-origin, top center, property, (-webkit-, ''));
+                @include vendor-prefix(transform, rotateX(-90deg), property, (-webkit-, ''));
+            }
 
-@include keyframes(pnMoveDownPersp) {
-	0%  {
-		@include vendor-prefix(perspective-origin, 50% 25%, property, (-webkit-, ''));
-	}
-	100%{
-		@include vendor-prefix(perspective-origin, 50% 100%, property, (-webkit-, ''));
-	}
-}
-
-
-.paternoster-box {
-	@include aspect-ratio($canvasMaxX, $canvasMaxY);
-	margin: auto;
-	max-width: $canvasMaxX * 1px;
-    overflow:hidden;
-
-    .paternoster {
-	    @include flex-container();
-	    [class^="lift-"], [class*=" lift-"] {
-		    @include simple-flex-box(widthPerc($cageOuterWidth, $canvasMaxX));
-
-			.cage-frame {
-				background-image:linear-gradient(180deg, white(.3), white(.2)), url(../img/front-back-sides.jpg);
-				background-size: contain;
-				width: 100%;
-				height: 100%;
-	    		padding: widthPerc($cageMaterialThickness, $cageOuterWidth);
-	    		position: relative;	    
-	    		//box-shadow: 2px 2px 2px 2px black(.3);		
-	    		&::before, &::after {
-	    			content:'';
-	    			position: absolute;
-	    			left: widthPerc($cageMaterialThickness, $cageOuterWidth);
-	    			width: widthPerc($cageInnerWidth, $cageOuterWidth);
-	    			// while this works it should actually bot be divided by 2
-	    			height: widthPerc($cageMaterialThickness / 2, $cageOuterWidth);
-	    			z-index: 2;
-	    			border-left: 1px black(.7) solid;
-	    			border-right: 1px black(.7) solid;
-	    		}
-	    		&::before {
-	    			top: 0;
-	    			background-image: linear-gradient(0deg, white(.3), white(.3)), url(../img/top-bottom.jpg);
-	    		}
-	    		&::after {
-	    			bottom: 0;
-	    			background-image: linear-gradient(0deg, white(.2), white(.2)), url(../img/top-bottom.jpg);
-	    		}
-   	
-   		@include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
-      	animation: pnMoveDownPersp 10s linear infinite;
-
-			}
-	    }
-
-	    .lift-left {
-	    	margin-right: (100 - ($cageOuterWidth * 100 / $canvasMaxX) * 2) * 1%;
-			.cage-frame {
-				&:first-of-type {
-					margin-top: 0%;
-      				//animation: pnMoveUp 10s linear infinite;
-				}
-			}
-	    }	    
-
-	    .lift-right {
-			.cage-frame {
-				&:first-of-type {
-					margin-top: 0;
-      				//animation: pnMoveDown 10s linear infinite;
-				}
-			}
-	    }
-	}
-
-    .cage {   
-    	height: 100%;
-    	width: 100%;
-		background: #efefef;
-
-   		@include vendor-prefix(perspective, 800px, property, (-webkit-, ''));
-   		@include vendor-prefix(transform-style, preserve-3d, property, (-webkit-, ''));  
-   		@include vendor-prefix(backface-visibility, visible, property, (-webkit-, ''));     	
-   	//	@include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
-        [class^='panel-'], [class*=' panel-'] { 
-
-	    	position: relative;
-    	
-	    	display: block;
-	    	position: absolute;
-	    	width: 100%;
-	    	background-size: cover;
-	    	border: 1px black(.2) solid;
-
-			&.panel-vertical {
-				height: 100%;
-				&.panel-right {					
-      	        	background-image: linear-gradient(135deg, black(.68), transparent), url(../img/front-back-sides.jpg);
-	    			border-right-color: black(.7);
-				}
-				&.panel-left {				
-      	        	background-image: linear-gradient(-135deg, black(.68), transparent), url(../img/front-back-sides.jpg);
-	    			border-left-color: black(.7);
-				}
-				&.panel-back {		
-      	        	background-image: linear-gradient(180deg, black(.68), transparent), url(../img/front-back-sides.jpg);
-				}
-			} 
-
-			&.panel-horizontal {
-				width: 100%;
-				// on given 
-				height: widthPerc($cageInnerWidth, $cageInnerHeight);
-				&.panel-top {
-					background-image: linear-gradient(0deg, black(.68), black(.2)), url(../img/top-bottom.jpg);
-				}
-				&.panel-bottom {					
-					background-image: linear-gradient(180deg, black(.2), transparent), url(../img/top-bottom.jpg);
-				}
-			} 
-
-
-			&.panel-back {
-			   @include vendor-prefix(transform, rotateY(180deg) translateZ($cageDepth * 1px), property, (-webkit-, ''));
-			}
-
-			&.panel-right {
-			   @include vendor-prefix(transform-origin, right center, property, (-webkit-, ''));
-			   @include vendor-prefix(transform, rotateY(-90deg), property, (-webkit-, ''));
-			}
-
-			&.panel-left {
-			   @include vendor-prefix(transform-origin, left center, property, (-webkit-, ''));
-			   @include vendor-prefix(transform, rotateY(90deg), property, (-webkit-, ''));
-			}
-
-			&.panel-top {
-			   @include vendor-prefix(transform-origin, top center, property, (-webkit-, ''));
-			   @include vendor-prefix(transform, rotateX(-90deg), property, (-webkit-, ''));
-			}
-
-			&.panel-bottom {
-			   top: auto;
-			   bottom: 0;
-			   @include vendor-prefix(transform-origin, bottom center, property, (-webkit-, ''));
-			   @include vendor-prefix(transform, rotateX(90deg), property, (-webkit-, ''));
-			}
-		}
+            &.bottom {
+                top: auto;
+                bottom: 0;
+                @include vendor-prefix(transform-origin, bottom center, property, (-webkit-, ''));
+                @include vendor-prefix(transform, rotateX(90deg), property, (-webkit-, ''));
+            }
+        }
 
     }
 }
