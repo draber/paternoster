@@ -1,21 +1,50 @@
 /* Theme: Wood */
-.paternoster-box .paternoster [class^="lift-"] .cage-frame.wood, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)), url(img/front-back-sides.jpg) top left / contain ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood::before, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood::before {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(img/top-bottom.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood::after, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood::after {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url(img/top-bottom.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-right, .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-right, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-right, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-right {
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent), url(img/front-back-sides.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-left, .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-left, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-left, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-left {
-    background: linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent), url(img/front-back-sides.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-back, .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-back, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-back, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-back {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent), url(img/front-back-sides.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-front, .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-front, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class^='panel-'].panel-vertical.panel-front, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-vertical.panel-front {
-    background: top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class^='panel-'].panel-horizontal.panel-top, .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-horizontal.panel-top, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class^='panel-'].panel-horizontal.panel-top, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-horizontal.panel-top {
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)), url(img/top-bottom.jpg) top left / cover ; }
-  .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class^='panel-'].panel-horizontal.panel-bottom, .paternoster-box .paternoster [class^="lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-horizontal.panel-bottom, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class^='panel-'].panel-horizontal.panel-bottom, .paternoster-box .paternoster [class*=" lift-"] .cage-frame.wood .cage [class*=' panel-'].panel-horizontal.panel-bottom {
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent), url(img/top-bottom.jpg) top left / cover ; }
+.paternoster ul li u.wood {
+  background:  url(img/front-back-sides.jpg) 0 0 / contain;
+}
+.paternoster ul li u.wood > s {
+  background:  linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+}
+.paternoster ul li u.wood::before {
+  background:  url(img/top-bottom.jpg) 0 0 / cover;
+}
+.paternoster ul li u.wood::after {
+  background:  url(img/top-bottom.jpg) center bottom / cover;
+}
+.paternoster ul li u.wood i b.right {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover;
+}
+.paternoster ul li u.wood i b.right s {
+  background:  linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent);
+}
+.paternoster ul li u.wood i b.left {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover;
+}
+.paternoster ul li u.wood i b.left s {
+  background:  linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent);
+}
+.paternoster ul li u.wood i b.back {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover;
+}
+.paternoster ul li u.wood i b.back s {
+  background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent);
+}
+.paternoster ul li u.wood i b.top {
+  background:  url(img/top-bottom.jpg) 0 0 / cover;
+}
+.paternoster ul li u.wood i b.top s {
+  background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2));
+}
+.paternoster ul li u.wood i b.bottom {
+  background:  url(img/top-bottom.jpg) 0 0 / cover;
+}
+.paternoster ul li u.wood i b.bottom s {
+  background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.paternoster ul li u.brick i b.front {
+  -webkit-transform: translateZ(-10px);
+  transform: translateZ(-10px);
+}
 
 /*# sourceMappingURL=theme.css.map */

@@ -32,7 +32,7 @@ body {
         @include flex-container();
         li {
             @include simple-flex-box(relativeWidth($cageOuterWidth, $canvasMaxX));
-            @include simple-border(black(.7));
+            @include simple-border(black(.3));
             height: 100%;
             u {
                 width: 100%;
@@ -53,9 +53,11 @@ body {
                 }
                 &::before {
                     top: 0;
+                    border-bottom: 1px black(.3) solid;
                 }
                 &::after {
                     bottom: 0;
+                    border-top: 1px black(.3) solid;
                 }
 
                 @include vendor-prefix(perspective-origin, 50% 50%, property, (-webkit-, ''));
@@ -64,6 +66,12 @@ body {
                     position: absolute;
                     width: 100%;
                     height: 100%;
+                }
+
+                & > s {
+                    margin-top: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
+                    margin-left: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
+                    z-index: 3;
                 }
             }
         }
@@ -91,7 +99,8 @@ body {
     i {
         height: 100%;
         width: 100%;
-        background: #efefef;
+        position: relative;
+        z-index: 4;
 
         @include vendor-prefix(perspective, 800px, property, (-webkit-, ''));
         @include vendor-prefix(transform-style, preserve-3d, property, (-webkit-, ''));
@@ -101,44 +110,30 @@ body {
             display: block;
             position: absolute;
             width: 100%;
-            border: 1px black(.2) solid;
+            //border: 1px black(.2) solid;
 
-            &.vertical {
-                height: 100%;
-                &.right {
-                    border-right-color: black(.7);
-                }
-                &.left {
-                    border-left-color: black(.7);
-                }
-                &.back {
-                }
-                &.front {
-                }
-            }
+			&.right, &.left, &.back, &.front {
+				height: 100%;
+			}
 
-            &.horizontal {
-                width: 100%;
-                // on given
-                height: relativeWidth($cageInnerWidth, $cageInnerHeight);
-                &.top {
-                }
-                &.bottom {
-                }
-            }
+			&.top, &.bottom {
+				width: 100%;
+				height: relativeWidth($cageInnerWidth, $cageInnerHeight);
+			}
+
+			&.right {
+				border-right-color: black(.7);
+				@include vendor-prefix(transform-origin, right center, property, (-webkit-, ''));
+				@include vendor-prefix(transform, rotateY(-90deg), property, (-webkit-, ''));
+			}
+			&.left {
+				border-left-color: black(.7);
+				@include vendor-prefix(transform-origin, left center, property, (-webkit-, ''));
+				@include vendor-prefix(transform, rotateY(90deg), property, (-webkit-, ''));
+			}
 
             &.back {
                 @include vendor-prefix(transform, rotateY(180deg) translateZ($cageDepth * 1px), property, (-webkit-, ''));
-            }
-
-            &.right {
-                @include vendor-prefix(transform-origin, right center, property, (-webkit-, ''));
-                @include vendor-prefix(transform, rotateY(-90deg), property, (-webkit-, ''));
-            }
-
-            &.left {
-                @include vendor-prefix(transform-origin, left center, property, (-webkit-, ''));
-                @include vendor-prefix(transform, rotateY(90deg), property, (-webkit-, ''));
             }
 
             &.top {
@@ -156,5 +151,3 @@ body {
 
     }
 }
-
-

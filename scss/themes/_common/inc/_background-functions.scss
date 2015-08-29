@@ -1,130 +1,154 @@
+/// Add url() or linear-gradient to an image/shadow if required
+/// linear-gradient is a blatant assumption of course
+/// @param {String} $resource image or shadow data with or without url/gradient
+/// @return {String} $resource wrapped in the correct function
+@function urlify($resource, $type) {
+	@if ($type == 'image') {
+		@if (str-index($resource, 'url') == null) {
+			@return 'url(#{$resource})';
+		} @else {
+			@return $resource;
+		}
+	} @else if ($type == 'shadow') {
+		@if (str-index($resource, 'gradient') == null) {
+			@return 'linear-gradient(#{$resource})';
+		} @else {
+			@return $resource;
+		}
+	}
+	@return $resource;
+}
+
+/// Convenience function to find elements that are void in this context
+/// @param {String} $resource
+/// @return {Boolean}
+@function notIsEmpty($resource) {
+	@return $resource != '' and $resource != false and $resource != null;
+}
+
+
+/// Pluralize the type of layer
+/// @param {String} $type image|shadow
+/// @return {String} $type images|shadows
+@function typeToPlural($type) {
+	@return map-get((
+		image: 'images',
+		shadow: 'shadows'
+	), $type);
+}
+
+
+/// Get the shorthand either images or shadows
+/// @param {Map} $panel
+/// @param {String} $type image|shadow
+/// @return {String} $shorthand
+@function getFragmentByType($panel, $type) {
+
+	$orderedKeys: (
+		'repeat',
+		'position',
+		'size',
+		'attachment',
+		'origin',
+		'clip'
+	);
+
+	$shorthand: '';
+	$items: ();
+
+	// single entity takes precedence over a multiple of the same
+	$single: map-get($panel, $type);
+	$multiple: map-get($panel, typeToPlural($type));
+	// create an image/shadow map from a single resource
+	@if (notIsEmpty($single)) {
+		$multiple: ();
+		$singleMap: (resource: $single);
+		@each $key in $orderedKeys {
+			$value: (#{$key}: map-get($panel, $key));
+			$singleMap: map-merge($singleMap, $value);
+		}
+		$multiple: append($multiple, $singleMap);
+	}
+
+	@if (notIsEmpty($multiple)) {
+		@each $dataSet in $multiple {
+			$resource: map-get($dataSet, 'resource');
+			@if(notIsEmpty($resource)) {
+				$resource: urlify($resource, $type);
+
+				$position: map-get($dataSet, 'position');
+				$size: map-get($dataSet, 'size');
+				@if(notIsEmpty($size) and $position == ''){
+					$position: '0 0';
+				}
+				@if (notIsEmpty($position) and notIsEmpty($size)) {
+					$dataSet: map-merge($dataSet, (position: $position + ' /'));
+				}
+				@each $key in $orderedKeys {
+					$value: map-get($dataSet, $key);
+					@if (notIsEmpty($value)) {
+						$resource: $resource + ' ' + $value;
+					}
+				}
+
+				$items: append($items, $resource);
+			}
+		}
+	}
+
+	@if (length($items) != 0) {
+		$shorthand: list-implode(', ', $items);
+	}
+
+	@return $shorthand;
+}
+
+
 /// Setup a panel
-/// @param {String} $side
-/// @return {Map} $panel
-@function getPanel($side) {
-	 
-	// merge default panel on skeleton
-	$panel: map-merge($skeletonPanel, map-get($defaultPanels, $side));
-
-	// merge custom panel
-	@if(map-has-key($panels, $side)) {		
-		$panel: map-merge($panel, map-get($panels, $side));
-	}
-
-	// execute 
-	$panel: setupShadow($panel);
-	$panel: setupImages($panel);
-	$panel: setupSeparator($panel);
-	@return  $panel;
-}
-
-
-/// Setup the shadow layer
 /// @param {Map} $panel
-/// @return {Map} $panel
-@function setupShadow($panel) {
+/// @param {String} $type image|shadow
+/// @return {String} $shorthand
+@function getShorthand($panel, $type) {
 
-	$shadow: '';
-
-	@if(map-get($panel, 'shadow') != false) {
-		$shadow: map-get($panel, 'shadow');
+	// Is there a shorthand already?
+	$shorthand: map-get($panel, 'shorthand');
+	@if (notIsEmpty($shorthand)) {
+		@return $shorthand;
 	}
 
-	@if($shadow != '' and str-index($shadow, 'gradient') == null) {
-		$shadow: linear-gradient(#{$shadow}); 
+	$shorthand: map-get($panel, 'color');
+
+	$fragment: getFragmentByType($panel, $type);
+	@if (notIsEmpty($fragment)) {
+		$shorthand: $shorthand + ' ' + $fragment;
 	}
 
-	$panel: map-merge($panel, ( shadow: $shadow ));
-
-	@return $panel;
-}
-
-
-/// Setup images including shadow layer and multiple positions, if any
-/// @param {Map} $panel
-/// @return {Map} $panel
-@function setupImages($panel){	
-
-	$finalImages: ();
-
-	$image: map-get($panel, 'image');
-	$images: map-get($panel, 'images');
-	$shadow: map-get($panel, 'shadow');
-	$positions: map-get($panel, 'positions');
-	$posLen: length($positions);
-
-	@if($image != ''){
-		$images: append($images, $image);
-	}
-
-	@if($shadow != ''){
-		$finalImages: append($finalImages, $shadow);
-	}
-
-  	@each $image in $images {
-
-    	$i: index($images, $image);    	
-  		$image: url(#{$image});
-  		@if($i <= $posLen) {
-  			$image: $image + ' ' + nth($positions, $i);
-  		}
-
-  		$finalImages: append($finalImages, $image);
-  	}
-
-  	$panel: map-remove($panel, 'shadow', 'images', 'positions');
-  	$panel: map-merge($panel, ( image: list-implode(', ', $finalImages) )); 
-
-	@return $panel;
-} 
-
-
-/// Insert a separator in case there is position and size
-/// @param {Map} $panel
-/// @return {Map} $panel
-@function setupSeparator($panel) {
-
-	$position:  map-get($panel, 'position');
-	$size:      map-get($panel, 'size');
-	$separator: '';
-
-	@if($size != '' and $position == '')	{
-		$position: 'top left'
-	}
-
-	@if($size != '')	{
-		$separator: '/';
-	}
-
-  	$panel: map-merge($panel, (
-		position: $position,
-		size: $size,
-		separator: $separator
-	)); 
-
-	@return $panel;
+	@return $shorthand;
 }
 
 
 /// Generate background value based on configuration
-/// @param {String} $side
-@mixin background($side) {
+/// @param {String} $side top|right|bottom|left|back|front|cage-frame|top-frame|bottom-frame
+/// @param {String} $type image|shadow
+@mixin background($side, $type) {
 
-	$panel: getPanel($side);
+	$typePlural: typeToPlural($type);
 
-	$background: list-implode(' ', (		
-		map-get($panel, 'color'),
-		map-get($panel, 'image'),
-		map-get($panel, 'repeat'),
-		map-get($panel, 'attachment'),
-		map-get($panel, 'position'),
-		map-get($panel, 'separator'),
-		map-get($panel, 'size'),
-		map-get($panel, 'origin'),
-		map-get($panel, 'clip')
-	));
+	// get the right layer
+	$panel: map-get($defaultPanels, $typePlural);
+	$panel: map-get($panel, $side);
 
-	@if($background != '') {
-		background: $background;
+	// merge custom panel
+	@if (map-has-key($customPanels, $typePlural)) {
+		$customPanels: map-get($customPanels, $typePlural);
+		@if (map-has-key($customPanels, $side)) {
+			$panel: map-merge($panel, map-get($customPanels, $side));
+		}
 	}
+
+	// merge default panel on skeleton
+	$panel: map-merge($panelSkeleton, $panel);
+
+	$shorthand: getShorthand($panel, $type);
+	background: #{$shorthand};
 }
