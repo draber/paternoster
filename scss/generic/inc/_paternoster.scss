@@ -68,6 +68,58 @@
 					margin-left: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
 					z-index: 3;
 				}
+
+
+				i {
+					height: 100%;
+					width: 100%;
+					position: relative;
+					z-index: 4;
+
+					@include vendor-prefix(perspective, 800px, property, $vendorPrefixes);
+					@include vendor-prefix(transform-style, preserve-3d, property, $vendorPrefixes);
+					@include vendor-prefix(backface-visibility, visible, property, $vendorPrefixes);
+					//	@include vendor-prefix(perspective-origin, 50% 50%, property, $vendorPrefixes);
+					b {
+						display: block;
+						position: absolute;
+						width: 100%;
+
+						&.right, &.left, &.back, &.front {
+							height: 100%;
+						}
+
+						&.top, &.bottom {
+							height: relativeWidth($cageInnerWidth, $cageInnerHeight);
+						}
+
+						&.right {
+							border-right-color: black(.7);
+							@include vendor-prefix(transform-origin, right center, property, $vendorPrefixes);
+							@include vendor-prefix(transform, rotateY(-90deg), property, $vendorPrefixes);
+							left: auto;
+							right: 0;
+						}
+						&.left {
+							border-left-color: black(.7);
+							@include vendor-prefix(transform-origin, left center, property, $vendorPrefixes);
+							@include vendor-prefix(transform, rotateY(90deg), property, $vendorPrefixes);
+						}
+
+						&.top {
+							@include vendor-prefix(transform-origin, top center, property, $vendorPrefixes);
+							@include vendor-prefix(transform, rotateX(-90deg), property, $vendorPrefixes);
+						}
+
+						&.bottom {
+							top: auto;
+							bottom: 0;
+							@include vendor-prefix(transform-origin, bottom center, property, $vendorPrefixes);
+							@include vendor-prefix(transform, rotateX(90deg), property, $vendorPrefixes);
+						}
+					}
+
+				}
 			}
 		}
 
@@ -89,60 +141,5 @@
 				}
 			}
 		}
-	}
-
-	i {
-		height: 100%;
-		width: 100%;
-		position: relative;
-		z-index: 4;
-
-		@include vendor-prefix(perspective, 800px, property, $vendorPrefixes);
-		@include vendor-prefix(transform-style, preserve-3d, property, $vendorPrefixes);
-		@include vendor-prefix(backface-visibility, visible, property, $vendorPrefixes);
-		//	@include vendor-prefix(perspective-origin, 50% 50%, property, $vendorPrefixes);
-		b {
-			display: block;
-			position: absolute;
-			width: 100%;
-			//border: 1px black(.2) solid;
-
-			&.right, &.left, &.back, &.front {
-				height: 100%;
-			}
-
-			&.top, &.bottom {
-				width: 100%;
-				height: relativeWidth($cageInnerWidth, $cageInnerHeight);
-			}
-
-			&.right {
-				border-right-color: black(.7);
-				@include vendor-prefix(transform-origin, right center, property, $vendorPrefixes);
-				@include vendor-prefix(transform, rotateY(-90deg), property, $vendorPrefixes);
-			}
-			&.left {
-				border-left-color: black(.7);
-				@include vendor-prefix(transform-origin, left center, property, $vendorPrefixes);
-				@include vendor-prefix(transform, rotateY(90deg), property, $vendorPrefixes);
-			}
-
-			&.back {
-				@include vendor-prefix(transform, rotateY(180deg) translateZ($cageDepth * 1px), property, $vendorPrefixes);
-			}
-
-			&.top {
-				@include vendor-prefix(transform-origin, top center, property, $vendorPrefixes);
-				@include vendor-prefix(transform, rotateX(-90deg), property, $vendorPrefixes);
-			}
-
-			&.bottom {
-				top: auto;
-				bottom: 0;
-				@include vendor-prefix(transform-origin, bottom center, property, $vendorPrefixes);
-				@include vendor-prefix(transform, rotateX(90deg), property, $vendorPrefixes);
-			}
-		}
-
 	}
 }
