@@ -20,7 +20,7 @@ require([
 	function(themeManager, pnManager) {
 
         themeManager.init();
-        var paternoster = pnManager.init(document.querySelector('main.paternoster'));
+       // var paternoster = pnManager.init(document.querySelector('main.paternoster'));
 
         // // just for fun
         // var boxes = [document.querySelector('.c'), document.querySelector('.a')];
