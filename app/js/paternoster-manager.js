@@ -39,57 +39,91 @@ define([
      * @param pnElem
      */
     var createObject = function createObject(pnElem) {
-        var directions = ['asc', 'desc'],
-            sides = ['right','left','back','front','top','bottom'],
-            dCnt = directions.length,
-            sCnt;
+        var dir = ['asc', 'desc'],
+            faces = ['right','left','back','front','top','bottom'],
+            dCnt = dir.length,
+            fCnt,
+            uCnt,
+            unit;
 
         pnObj = {
             paterNoster: pnElem
         };
 
         while(dCnt--) {
-            pnObj[directions[dCnt]] = {
-                cage: pnObj.paterNoster.querySelector('li.' + directions[dCnt]),
-                boards: {
-                    frame: pnObj.paterNoster.querySelector('u')
-                },
-                shadows: {
-                    frame: pnObj.paterNoster.querySelector('u > s')
-                }
+            // side
+            pnObj[dir[dCnt]] = {
+                side: pnObj.paterNoster.querySelector('li.' + dir[dCnt])
             };
-            sCnt = sides.length;
-            while(sCnt--) {
-                pnObj[directions[dCnt]].boards[sides[sCnt]] = pnObj[directions[dCnt]].cage.querySelector('b.' + sides[sCnt]);
-                pnObj[directions[dCnt]].shadows[sides[sCnt]] = pnObj[directions[dCnt]].boards[sides[sCnt]].querySelector('s');
+            pnObj[dir[dCnt]].units = [].slice.call(pnObj[dir[dCnt]].side.querySelectorAll('u'));
+            uCnt  = pnObj[dir[dCnt]].units.length;
+            while(uCnt--){
+                unit = pnObj[dir[dCnt]].units[uCnt];
+                pnObj[dir[dCnt]].units[uCnt] = {
+                    unit: unit,
+                    boards: {},
+                    shadows: {}
+                };
+                fCnt = faces.length;
+                while(fCnt--) {
+                    pnObj[dir[dCnt]].units[uCnt].boards[faces[fCnt]] = unit.querySelector('b.' + faces[fCnt]);
+                    pnObj[dir[dCnt]].units[uCnt].shadows[faces[fCnt]] = pnObj[dir[dCnt]].units[uCnt].boards[faces[fCnt]].querySelector('s');
+                }
+                pnObj[dir[dCnt]].units[uCnt].boards.cage = unit;
+                pnObj[dir[dCnt]].units[uCnt].shadows.cage = unit.querySelector('s');
             }
         }
-        pnObj.cages = pnObj.paterNoster.querySelectorAll('li');
-        pnObj.boards = pnObj.paterNoster.querySelectorAll('b');
-        pnObj.shadows = pnObj.paterNoster.querySelectorAll('s');
+        // some shortcuts
+        pnObj.boards = {};
+        pnObj.shadows = {};
+        fCnt = faces.length;
+        while(fCnt--) {
+            pnObj.boards[faces[fCnt]] = [].slice.call(pnObj.paterNoster.querySelectorAll('b.' + faces[fCnt]));
+            pnObj.shadows[faces[fCnt]] = [].slice.call(pnObj.paterNoster.querySelectorAll('b.' + faces[fCnt] + ' s'));
+        }
+        pnObj.all = {};
+        pnObj.all.units   = [].slice.call(pnObj.paterNoster.querySelectorAll('u'));
+        pnObj.all.boards  = [].slice.call(pnObj.paterNoster.querySelectorAll('b'));
+        pnObj.all.shadows = [].slice.call(pnObj.paterNoster.querySelectorAll('s'));
     };
-    
-    var fixBackPosition = function() {
-        var depth = parseInt(getComputedStyle(pnObj.asc.boards.top, null).getPropertyValue('height')),
-            transform = 'rotateY(180deg) translateZ(' + depth + 'px)';
-        pnObj.asc.boards.back.style[prefixedTransform] = transform;
-        pnObj.desc.boards.back.style[prefixedTransform] = transform;
-    };
-    
-    
-    var init = function init(pnElem) {
-        createObject(pnElem);
-        fixBackPosition();
-        window.addEventListener('resize', debounce(fixBackPosition, 150));
-        return pnObj;
-    };
-    
-    
 
+
+    /**
+     * Re-position the back
+     */
+    var fixBackPosition = function() {
+        var depth = parseInt(getComputedStyle(pnObj.boards.top[0], null).getPropertyValue('height')),
+            transform = 'rotateY(180deg) translateZ(' + depth + 'px)',
+            i = pnObj.boards.back.length;
+        while(i--){
+            pnObj.boards.back[i].style[prefixedTransform] = transform;
+        }
+    };
 
 
     return {
-        init: init
+
+        /**
+         * Initialize the manager
+         *
+         * @param pnElem
+         * @returns {*}
+         */
+        init: function init(pnElem) {
+            createObject(pnElem);
+            fixBackPosition();
+            window.addEventListener('resize', debounce(fixBackPosition, 150));
+            return this;
+        },
+
+
+        /**
+         * Retrieve an object with all elements of the pater noster
+         * @returns {*}
+         */
+        getObj: function() {
+            return pnObj;
+        }
     };
 });
 

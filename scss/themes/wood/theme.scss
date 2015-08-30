@@ -1,6 +1,2 @@
 @import "inc/bootstrap";
 @import '../_common/theme-template';
-
-.paternoster ul li u.brick i b.front {
-	@include vendor-prefix(transform, translateZ(-10px), property, (-webkit-, ''));
-}

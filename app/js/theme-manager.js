@@ -16,6 +16,9 @@ define([
 
     return {
 
+        /**
+         * Add stylesheets to DOM
+         */
         init: function init() {
             var link;
             var i = themes.length;
@@ -30,17 +33,37 @@ define([
                 document.head.appendChild(link);
                 themeArr.push(themes[i].id);
             }
+            return this;
         },
 
-        set: function set(theme, cageFrame) {
-            if(cageFrame.classList.contains(theme)) {
+        /**
+         * Set a theme to a certain cage
+         *
+         * @param theme
+         * @param cage
+         */
+        set: function set(theme, cage) {
+            if(cage.classList.contains(theme)) {
                 return;
             }
             var i = themeArr.length;
             while(i--) {
-                cageFrame.classList.remove(themeArr[i]);
+                cage.classList.remove(themeArr[i]);
             }
-            cageFrame.classList.add(theme);
+            cage.classList.add(theme);
+            return this;
+        },
+
+
+        /**
+         * Remove a theme to a cage
+         *
+         * @param theme
+         * @param cage
+         */
+        remove: function set(theme, cage) {
+            cage.classList.remove(theme);
+            return this;
         },
 
         getAll: function getAll() {

@@ -8,19 +8,19 @@ requirejs.config({
         text  : 'vendor/require-plugins/text',
         json  : 'vendor/require-plugins/json',
         themeManager: 'theme-manager',
-        paternosterManager: 'paternoster-manager'
+        pnManager: 'paternoster-manager'
     }
 });
 
 
 require([
 	'themeManager',
-    'paternosterManager'
+    'pnManager'
 	], 
-	function(themeManager, paternosterManager) {
+	function(themeManager, pnManager) {
 
         themeManager.init();
-        var paternoster = paternosterManager.init(document.querySelector('main.paternoster'));
+        var paternoster = pnManager.init(document.querySelector('main.paternoster'));
 
         // // just for fun
         // var boxes = [document.querySelector('.c'), document.querySelector('.a')];
