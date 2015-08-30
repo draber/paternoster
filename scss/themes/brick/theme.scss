@@ -1,2 +1,14 @@
 @import "inc/bootstrap";
 @import '../_common/theme-template';
+
+.paternoster {
+	ul {
+		li {
+			u {
+				&.#{themeId} {
+					
+				}
+			}
+		}
+	}
+}

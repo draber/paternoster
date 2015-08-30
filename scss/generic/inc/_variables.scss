@@ -4,8 +4,8 @@ $regularFont: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $headingFont: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 
 // pater noster
-$canvasMaxX: 900;
-$canvasMaxY: 800;
+$canvasMaxX: 675;
+$canvasMaxY: 600;
 
 $cageRatioX: 364;
 $cageRatioY: 768;
@@ -23,3 +23,5 @@ $cageDistanceBlockHeight: 280; // same as width?
 
 $cageUnitHeight: $cageOuterHeight + ($cageDistanceBlockHeight * 2);
 $cageDepth: $cageInnerWidth;
+
+$vendorPrefixes: (-webkit-, '');

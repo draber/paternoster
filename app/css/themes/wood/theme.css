@@ -1,50 +1,31 @@
 /* Theme: Wood */
-.paternoster ul li u.wood {
-  background:  url(img/front-back-sides.jpg) 0 0 / contain;
-}
-.paternoster ul li u.wood > s {
-  background:  linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
-}
-.paternoster ul li u.wood::before {
-  background:  url(img/top-bottom.jpg) 0 0 / cover;
-}
-.paternoster ul li u.wood::after {
-  background:  url(img/top-bottom.jpg) center bottom / cover;
-}
-.paternoster ul li u.wood i b.right {
-  background:  url(img/front-back-sides.jpg) 0 0 / cover;
-}
-.paternoster ul li u.wood i b.right s {
-  background:  linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent);
-}
-.paternoster ul li u.wood i b.left {
-  background:  url(img/front-back-sides.jpg) 0 0 / cover;
-}
-.paternoster ul li u.wood i b.left s {
-  background:  linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent);
-}
-.paternoster ul li u.wood i b.back {
-  background:  url(img/front-back-sides.jpg) 0 0 / cover;
-}
-.paternoster ul li u.wood i b.back s {
-  background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent);
-}
-.paternoster ul li u.wood i b.top {
-  background:  url(img/top-bottom.jpg) 0 0 / cover;
-}
-.paternoster ul li u.wood i b.top s {
-  background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2));
-}
-.paternoster ul li u.wood i b.bottom {
-  background:  url(img/top-bottom.jpg) 0 0 / cover;
-}
-.paternoster ul li u.wood i b.bottom s {
-  background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent);
-}
-
-.paternoster ul li u.brick i b.front {
-  -webkit-transform: translateZ(-10px);
-  transform: translateZ(-10px);
-}
+.paternoster u u.wood {
+  background:  url(img/front-back-sides.jpg) 0 0 / contain; }
+  .paternoster u u.wood > s {
+    background:  linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)); }
+  .paternoster u u.wood::before {
+    background:  url(img/top-bottom.jpg) 0 0 / cover; }
+  .paternoster u u.wood::after {
+    background:  url(img/top-bottom.jpg) center bottom / cover; }
+  .paternoster u u.wood b.right {
+    background:  url(img/front-back-sides.jpg) 0 0 / cover; }
+    .paternoster u u.wood b.right s {
+      background:  linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent); }
+  .paternoster u u.wood b.left {
+    background:  url(img/front-back-sides.jpg) 0 0 / cover; }
+    .paternoster u u.wood b.left s {
+      background:  linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent); }
+  .paternoster u u.wood b.back {
+    background:  url(img/front-back-sides.jpg) 0 0 / cover; }
+    .paternoster u u.wood b.back s {
+      background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent); }
+  .paternoster u u.wood b.top {
+    background:  url(img/top-bottom.jpg) 0 0 / cover; }
+    .paternoster u u.wood b.top s {
+      background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)); }
+  .paternoster u u.wood b.bottom {
+    background:  url(img/top-bottom.jpg) 0 0 / cover; }
+    .paternoster u u.wood b.bottom s {
+      background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent); }
 
 /*# sourceMappingURL=theme.css.map */
