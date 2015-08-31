@@ -3,20 +3,23 @@
 
 .paternoster {
 	@include aspect-ratio($canvasMaxX, $canvasMaxY);
-	margin: 6% auto 0;
+	margin: auto;
 	max-width: $canvasMaxX * 1px;
 	max-height: 88%;
 	overflow: hidden;
+	position: relative;
+	z-index: 50;
 
 	// No point for semantic markup in page that doesn't contain any text.
 	// Thus the meaning of the elements in this context are:
-	// ul = uncanny lift
-	// li = lift side
-	//  u = unit
-	//  i = inner part of a unit
-	//  b = board
-	//  s = shadow
-	ul, li, u, i, b, s {
+	//    ul = uncanny lift
+	//    li = lift side
+	// aside = a side
+	//     u = unit
+	//     i = inner part of a unit
+	//     b = board
+	//     s = shadow
+	ul, li, aside, u, i, b, s {
 		display: block;
 		padding: 0;
 		margin: 0;
@@ -35,7 +38,6 @@
 		width: 100%;
 		height: 100%;
 		position: relative;
-		@include simple-border(black(.25));
 		border-bottom:none;
 
 		u {
@@ -55,7 +57,7 @@
 				width: relativeWidth($cageInnerWidth, $cageOuterWidth);
 				// while this works it should actually not be divided by 2
 				height: relativeWidth($cageMaterialThickness / 2, $cageOuterWidth);
-				z-index: 2;
+				z-index: 52;
 				border-left: 1px black(.7) solid;
 				border-right: 1px black(.7) solid;
 			}
@@ -71,7 +73,7 @@
 			& > s {
 				margin-top: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
 				margin-left: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
-				z-index: 3;
+				z-index: 53;
 			}
 			b {
 				&.right, &.left, &.back, &.front {
@@ -100,7 +102,7 @@
 			height: 100%;
 			width: 100%;
 			position: relative;
-			z-index: 4;
+			z-index: 54;
 
 			@include vendor-prefix(perspective, 800px, property, $vendorPrefixes);
 			@include vendor-prefix(transform-style, preserve-3d, property, $vendorPrefixes);
@@ -120,30 +122,31 @@
 				height: 9%;
 			}
 
+			&.top {
+				@include vendor-prefix(transform-origin, top center, property, $vendorPrefixes);
+				@include vendor-prefix(transform, rotateX(-90deg), property, $vendorPrefixes);
+				background: radial-gradient(ellipse farthest-corner at center, black(.35) 0%, black(.40) 75%);
+				border-left: 1px solid black(.4);
+				border-right: 1px solid black(.4)
+			}
+
 			&.right {
 				border-right-color: black(.7);
 				@include vendor-prefix(transform-origin, right center, property, $vendorPrefixes);
 				@include vendor-prefix(transform, rotateY(-90deg), property, $vendorPrefixes);
 				left: auto;
 				right: 0;
-				//background:  linear-gradient(100deg, black(.25), black(.05)), url(img/wallpaper.png);
-				background: linear-gradient(90deg, black(.3), transparent), url(img/wallpaper.png);
+				background: linear-gradient(-14deg, transparent 0%, transparent 96%, black(.43) 100%),
+				linear-gradient(0deg, black(.25), black(.38)),
+				url(img/wallpaper.png);
 			}
 			&.left {
 				border-left-color: black(.7);
 				@include vendor-prefix(transform-origin, left center, property, $vendorPrefixes);
 				@include vendor-prefix(transform, rotateY(90deg), property, $vendorPrefixes);
-				//background:  linear-gradient(-100deg, black(.25), black(.05)), url(img/wallpaper.png);
-				background: linear-gradient(-90deg, black(.3), transparent), url(img/wallpaper.png);
-			}
-
-			&.top {
-				@include vendor-prefix(transform-origin, top center, property, $vendorPrefixes);
-				@include vendor-prefix(transform, rotateX(-90deg), property, $vendorPrefixes);
-				//background:  linear-gradient(0deg, black(.325), black(.05));
-				background: linear-gradient(0deg, black(.3), transparent);
-				border-left: 1px solid black(.2);
-				border-right: 1px solid black(.2);
+				background: linear-gradient(14deg, transparent 0%, transparent 96%, black(.43) 100%),
+				linear-gradient(0deg, black(.25), black(.38)),
+				url(img/wallpaper.png);
 			}
 
 			&.bottom {
@@ -151,7 +154,7 @@
 				bottom: 0;
 				@include vendor-prefix(transform-origin, bottom center, property, $vendorPrefixes);
 				@include vendor-prefix(transform, rotateX(90deg), property, $vendorPrefixes);
-				background: #999 linear-gradient(180deg, black(.15), transparent);
+				background: linear-gradient(180deg, black(.15), transparent), url(img/floortile.png);
 				border-left: 1px solid black(.2);
 				border-right: 1px solid black(.2);
 			}

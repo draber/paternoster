@@ -3,7 +3,7 @@ $defaultPanels: (
     images:(
         top: (
             image: 'url(img/top-bottom.jpg))',
-			size: cover
+			size: contain
         ),
         right: (
             image: 'url(img/front-back-sides.jpg)',
@@ -11,7 +11,7 @@ $defaultPanels: (
         ),
         bottom: (
             image: 'url(img/top-bottom.jpg)',
-			size: cover
+			size: contain
         ),
         left: (
             image: 'url(img/front-back-sides.jpg)',
@@ -29,11 +29,11 @@ $defaultPanels: (
         ),
         top-frame: (
             image: 'url(img/top-bottom.jpg)',
-			size: cover
+			size: contain
         ),
         bottom-frame: (
             image: 'url(img/top-bottom.jpg)',
-			size: cover,
+			size: contain,
 			position: 'center bottom'
         )
     ),

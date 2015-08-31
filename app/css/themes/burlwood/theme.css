@@ -4,9 +4,9 @@
   .paternoster u u.burlwood > s {
     background:  linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)); }
   .paternoster u u.burlwood::before {
-    background:  url(img/top-bottom.jpg) 0 0 / cover; }
+    background:  url(img/top-bottom.jpg) 0 0 / contain; }
   .paternoster u u.burlwood::after {
-    background:  url(img/top-bottom.jpg) center bottom / cover; }
+    background:  url(img/top-bottom.jpg) center bottom / contain; }
   .paternoster u u.burlwood b.right {
     background:  url(img/front-back-sides.jpg) 0 0 / cover; }
     .paternoster u u.burlwood b.right s {
@@ -20,11 +20,11 @@
     .paternoster u u.burlwood b.back s {
       background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent); }
   .paternoster u u.burlwood b.top {
-    background:  url(img/top-bottom.jpg) 0 0 / cover; }
+    background:  url(img/top-bottom.jpg) 0 0 / contain; }
     .paternoster u u.burlwood b.top s {
       background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)); }
   .paternoster u u.burlwood b.bottom {
-    background:  url(img/top-bottom.jpg) 0 0 / cover; }
+    background:  url(img/top-bottom.jpg) 0 0 / contain; }
     .paternoster u u.burlwood b.bottom s {
       background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent); }
 
