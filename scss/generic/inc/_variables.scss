@@ -9,7 +9,7 @@ $meters: (
 	unitInnerY: 2.25,
 	unitBoardThickness: .02,
 	skirtingOverlap: .05,
-	lowerSkirtingZ: .04,
+	upperSkirtingZ: .04,
 	apertureY: 2.7,
 	apertureZ: .2,
 	apertureDistance: .28,
@@ -21,7 +21,7 @@ $meters: map-merge($meters, (
 	unitInnerZ: map-get($meters, 'unitInnerX'),
 	skirtingX: map-get($meters, 'unitInnerX') * .95, // as in 'a bit narrower than the unit'
 	skirtingY: map-get($meters, 'unitInnerX') * .9, // not quite square
-	upperSkirtingZ: map-get($meters, 'lowerSkirtingZ') + map-get($meters, 'unitBoardThickness'),
+	lowerSkirtingZ: map-get($meters, 'upperSkirtingZ') + map-get($meters, 'unitBoardThickness'),
 	apertureX: map-get($meters, 'unitInnerX') + (2 * map-get($meters, 'unitBoardThickness'))
 ));
 

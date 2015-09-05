@@ -3,28 +3,22 @@
 @include keyframes(pnMoveUp) {
     0% {
         margin-top: 0;
-        //	@include vendor-prefix(perspective-origin, 1% 1%, property, (-webkit-, ''));
     }
     100% {
-        margin-top: proportion($cageUnitHeight, ($cageOuterWidth * -1));
-        //	@include vendor-prefix(perspective-origin, 100% 100%, property, (-webkit-, ''));
+        //margin-top: proportion($cageUnitHeight, ($cageOuterWidth * -1));
+        margin-top: proportion((map-get($meters, 'unitInnerY') + map-get($meters, 'skirtingY')*2 - map-get($meters, 'skirtingOverlap')) * -1, map-get($meters, 'roomY'), 'vh');
+        
+        
+        
     }
 }
 
 @include keyframes(pnMoveDown) {
     0% {
-        margin-top: proportion($cageUnitHeight, ($cageOuterWidth * -1));
+        //margin-top: proportion($cageUnitHeight, ($cageOuterWidth * -1));
+        margin-top: map-get($meters, 'unitInnerY') + map-get($meters, 'skirtingY');
     }
     100% {
         margin-top: 0;
-    }
-}
-
-@include keyframes(pnMoveDownPersp) {
-    0% {
-        @include vendor-prefix(perspective-origin, 50% 25%, property, (-webkit-, ''));
-    }
-    100% {
-        @include vendor-prefix(perspective-origin, 50% 100%, property, (-webkit-, ''));
     }
 }
