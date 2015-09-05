@@ -1,3 +1,4 @@
 resources/
 *.cmd
 .idea/
+.sass-cache/
