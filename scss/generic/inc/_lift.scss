@@ -4,26 +4,24 @@
 #{$scope} {
 
 	q {
-		border: 1px red solid;
 		@include vendor-prefix(transform, translateZ(vh('apertureZ', '-')), property, $vendorPrefixes);
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
-		perspective: 1700px; 
-		background-color:#444;
-	  position: relative;
-				
-		u {		
-		  transform-style: preserve-3d;
-			&:first-child{		  
-		    animation: pnMoveUp 10s infinite linear;
-		  }			
+		perspective: 1700px;
+		background-color: #444;
+		position: relative;
+
+		u {
+			transform-style: preserve-3d;
+			&:first-child {
+				animation: pnMoveUp 20s infinite linear;
+			}
 		}
-		
+
 		i {
 			width: vh('unitX');
 			height: vh('unitY');
-			border: 1px green solid;
 			position: relative;
 			transform-style: preserve-3d;
 		}
@@ -35,41 +33,39 @@
 		sup {
 			border-radius: vh('skirtingRadius') vh('skirtingRadius') 0 0;
 			margin-top: vh('skirtingOverlap', '-');
-			border: 1px blue solid;
-			background-color:#666;
-		  @include vendor-prefix(transform, translateZ(vh('upperSkirtingZ', '-')), property, $vendorPrefixes);
+			background-color: #666;
+			@include vendor-prefix(transform, translateZ(vh('upperSkirtingZ', '-')), property, $vendorPrefixes);
 		}
 		sub {
 			border-radius: 0 0 vh('skirtingRadius') vh('skirtingRadius');
-			border: 1px violet solid;
-			background-color:#999;
-		  @include vendor-prefix(transform, translateZ(vh('lowerSkirtingZ', '-')), property, $vendorPrefixes);
+			background-color: #999;
+			@include vendor-prefix(transform, translateZ(vh('lowerSkirtingZ', '-')), property, $vendorPrefixes);
 		}
-		
-		b {		  
-  		&.top, &.bottom {
-  		  height: vh('unitX');
-  		}
-  		&.left, &.right {
-  		  width: vh('unitX');
-  		}
-  	
-    	&.top {
-    	  background: yellow;
-    	}
-    	&.bottom {
-    	  background: green;
-    	}
-    	&.right {
-    	  background: blue;
-    	}
-    	&.left {
-    	  background: red;
-    	}
-    	&.back {
-    	  background: white;
-  		  @include vendor-prefix(transform, translateZ(vh('unitInnerZ', '-')), property, $vendorPrefixes);
-    	}
-    }
+
+		b {
+			&.top, &.bottom {
+				height: vh('unitX');
+			}
+			&.left, &.right {
+				width: vh('unitX');
+			}
+
+			&.top {
+				background: yellow;
+			}
+			&.bottom {
+				background: green;
+			}
+			&.right {
+				background: blue;
+			}
+			&.left {
+				background: red;
+			}
+			&.back {
+				background: white;
+				@include vendor-prefix(transform, translateZ(vh('unitInnerZ', '-')), property, $vendorPrefixes);
+			}
+		}
 	}
 }

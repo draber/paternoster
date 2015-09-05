@@ -21,7 +21,7 @@ $meters: map-merge($meters, (
 	unitInnerZ: map-get($meters, 'unitInnerX'),
 	skirtingX: map-get($meters, 'unitInnerX') * .95, // as in 'a bit narrower than the unit'
 	skirtingY: map-get($meters, 'unitInnerX') * .9, // not quite square
-	lowerSkirtingZ: map-get($meters, 'upperSkirtingZ') + map-get($meters, 'unitBoardThickness'),
+	lowerSkirtingZ: map-get($meters, 'upperSkirtingZ') - map-get($meters, 'unitBoardThickness'),
 	apertureX: map-get($meters, 'unitInnerX') + (2 * map-get($meters, 'unitBoardThickness'))
 ));
 
