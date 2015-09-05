@@ -1,27 +1,49 @@
-// fonts
-$monospaceFont: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
-$regularFont: "Helvetica Neue", Helvetica, Arial, sans-serif;
-$headingFont: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+$scope: '.paternoster-room';
 
-// pater noster
-$canvasMaxX: 675;
-$canvasMaxY: 600;
+// 2.20m for the paternoster plus .5m to the sealing
+$meters: (
+	roomY: 3, // = 100vh
+	eyeY: 	1.7,
+	roomZ: 1.8, // actually: how far removed is the viewer from the aperture
+	unitInnerX: .95,
+	unitInnerY: 2.25,
+	unitBoardThickness: .02,
+	skirtingOverlap: .05,
+	lowerSkirtingZ: .04,
+	apertureY: 2.7,
+	apertureZ: .2,
+	apertureDistance: .28,
+	skirtingRadius: .15,
+	skirtingBoardHeight: .12 // skirting board != skirting!
+);
 
-$cageRatioX: 364;
-$cageRatioY: 768;
+$meters: map-merge($meters, (
+	unitInnerZ: map-get($meters, 'unitInnerX'),
+	skirtingX: map-get($meters, 'unitInnerX') * .95, // as in 'a bit narrower than the unit'
+	skirtingY: map-get($meters, 'unitInnerX') * .9, // not quite square
+	upperSkirtingZ: map-get($meters, 'lowerSkirtingZ') + map-get($meters, 'unitBoardThickness'),
+	apertureX: map-get($meters, 'unitInnerX') + (2 * map-get($meters, 'unitBoardThickness'))
+));
 
-$cageMaterialThickness: 10;
+$meters: map-merge($meters, (
+	apertureTop: map-get($meters, 'roomY') - map-get($meters, 'apertureY'),
+	ascLeftNudge: (map-get($meters, 'apertureDistance') / 2) + map-get($meters, 'apertureX'),
+	descLeftNudge: (map-get($meters, 'apertureDistance') / 2),
+	unitX: map-get($meters, 'apertureX'),
+	unitY: map-get($meters, 'unitInnerY') + (2 * map-get($meters, 'unitBoardThickness'))
+));
 
-$cageOuterHeight: $canvasMaxY;
-$cageOuterWidth: $cageOuterHeight * $cageRatioX / $cageRatioY;
+$meters: map-merge($meters, (
+	skirtingBoard_1_Width: map-get($meters, 'ascLeftNudge'),
+	skirtingBoard_1_Left: 0,
+	skirtingBoard_2_Width: map-get($meters, 'apertureDistance'),
+	skirtingBoard_2_LeftNudge: map-get($meters, 'ascLeftNudge') +  map-get($meters, 'apertureX'),
+));
 
-$cageInnerHeight: $cageOuterHeight - ($cageMaterialThickness * 2);
-$cageInnerWidth: $cageOuterWidth - ($cageMaterialThickness * 2);
+$meters: map-merge($meters, (
+	skirtingBoard_3_Width: map-get($meters, 'skirtingBoard_1_Width'),
+	skirtingBoard_3_LeftNudge: map-get($meters, 'descLeftNudge') + map-get($meters, 'apertureX')
+));
 
-$cageDistanceBlockWidth: 0; // same as width!
-$cageDistanceBlockHeight: 280; // same as width?
-
-$cageUnitHeight: $cageOuterHeight + ($cageDistanceBlockHeight * 2);
-$cageDepth: $cageInnerWidth;
 
 $vendorPrefixes: (-webkit-, '');

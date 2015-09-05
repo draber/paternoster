@@ -2,9 +2,9 @@
 @import './keyframes';
 
 .paternoster {
-	@include aspect-ratio($canvasMaxX, $canvasMaxY);
+	@include aspect-ratio($pnAreaMaxX, $pnAreaMaxY);
 	margin: auto;
-	max-width: $canvasMaxX * 1px;
+	max-width: $pnAreaMaxX * 1px;
 	max-height: 88%;
 	overflow: hidden;
 	position: relative;
@@ -30,7 +30,7 @@
 		@include flex-container();
 	}
 	li {
-		@include simple-flex-box(relativeWidth($cageOuterWidth, $canvasMaxX));
+		@include simple-flex-box(proportion($cageOuterWidth, $pnAreaMaxX));
 		height: 100%;
 	}
 
@@ -42,7 +42,7 @@
 
 		u {
 			height: 100%;
-			padding: relativeWidth($cageMaterialThickness, $cageOuterWidth);
+			padding: proportion($cageMaterialThickness, $cageOuterWidth);
 			position: relative;
 			border: none;
 
@@ -53,10 +53,10 @@
 			&::before, &::after {
 				content: '';
 				position: absolute;
-				left: relativeWidth($cageMaterialThickness, $cageOuterWidth);
-				width: relativeWidth($cageInnerWidth, $cageOuterWidth);
+				left: proportion($cageMaterialThickness, $cageOuterWidth);
+				width: proportion($cageInnerWidth, $cageOuterWidth);
 				// while this works it should actually not be divided by 2
-				height: relativeWidth($cageMaterialThickness / 2, $cageOuterWidth);
+				height: proportion($cageMaterialThickness / 2, $cageOuterWidth);
 				z-index: 52;
 				border-left: 1px black(.7) solid;
 				border-right: 1px black(.7) solid;
@@ -71,8 +71,8 @@
 			}
 
 			& > s {
-				margin-top: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
-				margin-left: relativeWidth($cageMaterialThickness, $cageOuterWidth, false);
+				margin-top: proportion($cageMaterialThickness, $cageOuterWidth, false);
+				margin-left: proportion($cageMaterialThickness, $cageOuterWidth, false);
 				z-index: 53;
 			}
 			b {
@@ -82,7 +82,7 @@
 				}
 
 				&.top, &.bottom {
-					height: relativeWidth($cageInnerWidth, $cageInnerHeight);
+					height: proportion($cageInnerWidth, $cageInnerHeight);
 				}
 
 				&.back {
@@ -162,7 +162,7 @@
 	}
 
 	.asc {
-		margin-right: (100 - ($cageOuterWidth * 100 / $canvasMaxX) * 2) * 1%;
+		margin-right: (100 - ($cageOuterWidth * 100 / $pnAreaMaxX) * 2) * 1%;
 		u {
 			&:first-of-type {
 				margin-top: 0%;
