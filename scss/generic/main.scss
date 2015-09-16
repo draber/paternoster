@@ -38,24 +38,22 @@
 	kbd {
 		bottom:0;
 		position:absolute;
-		height: vh('skirtingBoardHeight');
+		height: vh('baseBoardHeight');
 		@include vendor-prefix(transform, translateZ(vh('roomZ', '-')), property, $vendorPrefixes);
 		&:nth-of-type(1) {
-			background: turquoise;
-			width: calc(100% - #{vh('skirtingBoard_1_Width')});
-			left:  calc(-50% - #{vh('skirtingBoard_1_Left')});
-			opacity: .5;
+			width: calc(100vw - #{vh('baseBoardLargeWidth')});
+			left:  -50vw;
+			background: firebrick;
 		}
 		&:nth-of-type(2) {
-			background: peru;
-			width: vh('skirtingBoard_2_Width');
-			left: calc(50vw - #{vh('skirtingBoard_2_LeftNudge')});
+			width: vh('baseBoardSmallWidth');
+			left: calc(50vw - #{vh('baseBoardSmallOffset')});
+			background: firebrick;
 		}
 		&:nth-of-type(3) {
 			background: firebrick;
-			width: vh('skirtingBoard_3_Width');
-			left: calc(-100vw - #{vh('skirtingBoard_3_LeftNudge')});
-			opacity: .5
+			width: calc(100vw - #{vh('baseBoardLargeWidth')});
+			right: -50vw;
 		}
 	}
 
@@ -65,11 +63,15 @@
 		width: vh('apertureX');
 		height: vh('apertureY');
 		top: vh('apertureTop');
-		left: calc(50% + #{vh('descLeftNudge')});
+		left: calc(50% + #{vh('descLeftOffset')});
 		&:first-of-type {
-			left: calc(50% - #{vh('ascLeftNudge')});
+			left: calc(50% - #{vh('ascLeftOffset')});
 		}
+
+		//@todo remove border?
 		border: 1px solid black(.3);
+		border-bottom: none;
+		
 		@include vendor-prefix(transform-style, 'preserve-3d', property, $vendorPrefixes);
 		@include vendor-prefix(transform, translateZ(vh('roomZ', '-')), property, $vendorPrefixes);
 		s {
@@ -95,9 +97,7 @@
 	/// Queue of cages
 	a:first-of-type {
 		q {
-			@include perspective(90%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 250vh);
-			@include perspective(50%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 250vh);
-
+			@include perspective(90%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 200vh);
 			u:first-of-type {
 				//animation: pnMoveUp 20s infinite linear;
 				margin-top: -200px;
@@ -107,8 +107,7 @@
 
 	q {
 		@include vendor-prefix(transform, translateZ(vh('apertureZ', '-')), property, $vendorPrefixes);
-
-		@include perspective(10%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 250vh);
+		@include perspective(10%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 200vh);
 		width: 100%;
 		height: 100%;
 		overflow: hidden;
@@ -134,10 +133,10 @@
 			background: blueviolet;
 		}
 		&::before {
-			top: vh('cageTopBottomBoardNudge');
+			top: vh('cageTopBottomBoardOffset');
 		}
 		&::after {
-			bottom: vh('cageTopBottomBoardNudge');
+			bottom: vh('cageTopBottomBoardOffset');
 		}
 	}
 

@@ -122,8 +122,8 @@ a, aside, kbd {
   height: 100vh;
   width: 200vw;
   left: -50%;
-  -webkit-transform: translateZ(-60vh);
-  transform: translateZ(-60vh);
+  -webkit-transform: translateZ(-40vh);
+  transform: translateZ(-40vh);
 }
 .paternoster-room > .top, .paternoster-room > .bottom {
   width: 200%;
@@ -131,55 +131,54 @@ a, aside, kbd {
 }
 .paternoster-room > .top {
   background: silver;
-  height: 60vh;
+  height: 40vh;
 }
 .paternoster-room > .bottom {
   background: url(img/floortile.png);
-  height: calc(60vh + 6.66667vh);
+  height: calc(40vh + 9.33333vh);
 }
 .paternoster-room kbd {
   bottom: 0;
   position: absolute;
   height: 4vh;
-  -webkit-transform: translateZ(-60vh);
-  transform: translateZ(-60vh);
+  -webkit-transform: translateZ(-40vh);
+  transform: translateZ(-40vh);
 }
 .paternoster-room kbd:nth-of-type(1) {
-  background: turquoise;
-  width: calc(100% - 37.66667vh);
-  left: calc(-50% - 0vh);
-  opacity: .5;
+  width: calc(100vw - 38.66667vh);
+  left: -50vw;
+  background: firebrick;
 }
 .paternoster-room kbd:nth-of-type(2) {
-  background: peru;
   width: 9.33333vh;
-  left: calc(50vw - 70.66667vh);
+  left: calc(50vw - 4.66667vh);
+  background: firebrick;
 }
 .paternoster-room kbd:nth-of-type(3) {
   background: firebrick;
-  width: 37.66667vh;
-  left: calc(-100vw - 37.66667vh);
-  opacity: 0.5;
+  width: calc(100vw - 38.66667vh);
+  right: -50vw;
 }
 .paternoster-room a {
-  width: 33vh;
+  width: 34vh;
   height: 90vh;
   top: 10.0vh;
   left: calc(50% + 4.66667vh);
   border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: none;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-transform: translateZ(-60vh);
-  transform: translateZ(-60vh);
+  -webkit-transform: translateZ(-40vh);
+  transform: translateZ(-40vh);
 }
 .paternoster-room a:first-of-type {
-  left: calc(50% - 37.66667vh);
+  left: calc(50% - 38.66667vh);
 }
 .paternoster-room a s.top, .paternoster-room a s.bottom {
-  height: 6.66667vh;
+  height: 9.33333vh;
 }
 .paternoster-room a s.left, .paternoster-room a s.right {
-  width: 6.66667vh;
+  width: 9.33333vh;
 }
 .paternoster-room a s.top {
   background: radial-gradient(ellipse farthest-corner at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 75%);
@@ -193,16 +192,8 @@ a, aside, kbd {
 .paternoster-room a:first-of-type q {
   -webkit-perspective-origin: 90% 36.66667%;
   perspective-origin: 90% 36.66667%;
-  -webkit-perspective: 250vh;
-  perspective: 250vh;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
-  -webkit-perspective-origin: 50% 36.66667%;
-  perspective-origin: 50% 36.66667%;
-  -webkit-perspective: 250vh;
-  perspective: 250vh;
+  -webkit-perspective: 200vh;
+  perspective: 200vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-backface-visibility: visible;
@@ -212,12 +203,12 @@ a, aside, kbd {
   margin-top: -200px;
 }
 .paternoster-room q {
-  -webkit-transform: translateZ(-6.66667vh);
-  transform: translateZ(-6.66667vh);
+  -webkit-transform: translateZ(-9.33333vh);
+  transform: translateZ(-9.33333vh);
   -webkit-perspective-origin: 10% 36.66667%;
   perspective-origin: 10% 36.66667%;
-  -webkit-perspective: 250vh;
-  perspective: 250vh;
+  -webkit-perspective: 200vh;
+  perspective: 200vh;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-backface-visibility: visible;
@@ -235,8 +226,8 @@ a, aside, kbd {
   content: '';
   position: absolute;
   width: 31.66667vh;
-  height: 0.66667vh;
-  left: 0.66667vh;
+  height: 1.16667vh;
+  left: 1.16667vh;
   background: blueviolet;
 }
 .paternoster-room u::before {
@@ -250,21 +241,21 @@ a, aside, kbd {
   height: 75vh;
   position: relative;
   transform-style: preserve-3d;
-  margin: 0.66667vh;
+  margin: 1.16667vh;
 }
 .paternoster-room i::before, .paternoster-room i::after {
   content: '';
   position: absolute;
-  height: 76.33333vh;
-  width: 0.66667vh;
-  top: -0.66667vh;
+  height: 77.33333vh;
+  width: 1.16667vh;
+  top: -1.16667vh;
   background: greenyellow;
 }
 .paternoster-room i::before {
-  left: -0.66667vh;
+  left: -1.16667vh;
 }
 .paternoster-room i::after {
-  right: -0.66667vh;
+  right: -1.16667vh;
 }
 .paternoster-room b.top, .paternoster-room b.bottom {
   height: 31.66667vh;
@@ -317,8 +308,8 @@ a, aside, kbd {
 .paternoster-room sub {
   border-radius: 0 0 5vh 5vh;
   background-color: #999;
-  -webkit-transform: translateZ(-0.66667vh);
-  transform: translateZ(-0.66667vh);
+  -webkit-transform: translateZ(-0.16667vh);
+  transform: translateZ(-0.16667vh);
 }
 
 /*# sourceMappingURL=main.css.map */

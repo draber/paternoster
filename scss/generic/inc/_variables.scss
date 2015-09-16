@@ -4,17 +4,17 @@ $scope: '.paternoster-room';
 $meters: (
 	roomY: 3, // = 100vh
 	eyeY: 	1.9,
-	roomZ: 1.8, // actually: how far removed is the viewer from the wall
+	roomZ: 1.2, // actually: how far removed is the viewer from the wall
 	cageInnerX: .95,
 	cageInnerY: 2.25,
-	cageBoardThickness: .02,
+	cageBoardThickness: .035,
 	skirtingOverlap: .05,
 	upperSkirtingZ: .04,
 	apertureY: 2.7,
-	apertureZ: .2,
+	apertureZ: .28,
 	apertureDistance: .28,
 	skirtingRadius: .15,
-	skirtingBoardHeight: .12 // skirting board != skirting!
+	baseBoardHeight: .12
 );
 
 $meters: map-merge($meters, (
@@ -27,23 +27,21 @@ $meters: map-merge($meters, (
 
 $meters: map-merge($meters, (
 	apertureTop: map-get($meters, 'roomY') - map-get($meters, 'apertureY'),
-	ascLeftNudge: (map-get($meters, 'apertureDistance') / 2) + map-get($meters, 'apertureX'),
-	descLeftNudge: (map-get($meters, 'apertureDistance') / 2),
+	ascLeftOffset: (map-get($meters, 'apertureDistance') / 2) + map-get($meters, 'apertureX'),
+	descLeftOffset: (map-get($meters, 'apertureDistance') / 2),
 	cageOuterX: map-get($meters, 'apertureX'),
 	cageOuterY: map-get($meters, 'cageInnerY') + (2 * map-get($meters, 'cageBoardThickness')),
-	cageTopBottomBoardNudge: map-get($meters, 'skirtingY')
+	cageTopBottomBoardOffset: map-get($meters, 'skirtingY')
 ));
 
 $meters: map-merge($meters, (
-	skirtingBoard_1_Width: map-get($meters, 'ascLeftNudge'),
-	skirtingBoard_1_Left: 0,
-	skirtingBoard_2_Width: map-get($meters, 'apertureDistance'),
-	skirtingBoard_2_LeftNudge: map-get($meters, 'ascLeftNudge') +  map-get($meters, 'apertureX'),
+	baseBoardLargeWidth: map-get($meters, 'ascLeftOffset'),
+	baseBoardSmallWidth: map-get($meters, 'apertureDistance'),
+	baseBoardSmallOffset: map-get($meters, 'apertureDistance') / 2,
 ));
 
 $meters: map-merge($meters, (
-	skirtingBoard_3_Width: map-get($meters, 'skirtingBoard_1_Width'),
-	skirtingBoard_3_LeftNudge: map-get($meters, 'descLeftNudge') + map-get($meters, 'apertureX')
+	baseBoard_3_LeftOffset: map-get($meters, 'descLeftOffset') + map-get($meters, 'apertureX')
 ));
 
 
