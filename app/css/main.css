@@ -130,8 +130,8 @@ a, aside, kbd {
   left: -50%;
 }
 .paternoster-room > .top {
-  background: silver;
   height: 40vh;
+  background: url("themes/wood/img/top-bottom.jpg");
 }
 .paternoster-room > .bottom {
   background: url(img/floortile.png);
