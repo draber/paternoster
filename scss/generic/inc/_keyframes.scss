@@ -6,7 +6,7 @@
     }
     100% {
         //margin-top: proportion($cageUnitHeight, ($cageOuterWidth * -1));
-        margin-top: proportion((map-get($meters, 'unitInnerY') + map-get($meters, 'skirtingY')*2 - map-get($meters, 'skirtingOverlap')) * -1, map-get($meters, 'roomY'), 'vh');
+        margin-top: proportion((map-get($meters, 'cageInnerY') + map-get($meters, 'skirtingY')*2 - map-get($meters, 'skirtingOverlap')) * -1, map-get($meters, 'roomY'), 'vh');
         
         
         
@@ -16,7 +16,7 @@
 @include keyframes(pnMoveDown) {
     0% {
         //margin-top: proportion($cageUnitHeight, ($cageOuterWidth * -1));
-        margin-top: map-get($meters, 'unitInnerY') + map-get($meters, 'skirtingY');
+        margin-top: map-get($meters, 'cageInnerY') + map-get($meters, 'skirtingY');
     }
     100% {
         margin-top: 0;

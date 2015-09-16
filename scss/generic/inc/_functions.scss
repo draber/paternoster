@@ -1,4 +1,5 @@
-@mixin vendor-prefix($property, $value, $whatToPrefix: property, $prefixes: (-webkit-, -moz-, -ms-, -o-, '')) {
+@mixin vendor-prefix($property, $value, $whatToPrefix: property, $prefixes: (-webkit-, -moz-, -ms-, -o-)) {
+    $prefixes: append($prefixes, '');
     @if $whatToPrefix == 'property' {
         @each $prefix in $prefixes {
             #{$prefix + $property}: #{$value};
@@ -50,17 +51,17 @@
 
 @mixin flex-container($wrapBehavior: nowrap) {
     // Final Syntax
-    @include vendor-prefix(display, flex, value, (-webkit-, ''));
+    @include vendor-prefix(display, flex, value, (-webkit-));
 
-    @include vendor-prefix(direction, row, property, (-webkit-, ''));
-    @include vendor-prefix(flex-wrap, $wrapBehavior, property, (-webkit-, ''));
+    @include vendor-prefix(direction, row, property, (-webkit-));
+    @include vendor-prefix(flex-wrap, $wrapBehavior, property, (-webkit-));
 
-    @include vendor-prefix(justify-content, flex-start, property, (-webkit-, ''));
+    @include vendor-prefix(justify-content, flex-start, property, (-webkit-));
 
-    @include vendor-prefix(align-content, flex-start, property, (-webkit-, ''));
+    @include vendor-prefix(align-content, flex-start, property, (-webkit-));
 
     flex-align: stretch;
-    @include vendor-prefix(align-items, stretch, property, (-webkit-, ''));
+    @include vendor-prefix(align-items, stretch, property, (-webkit-));
 }
 
 @mixin simple-flex-box($width: auto, $minWidth: 1) {
@@ -68,7 +69,7 @@
     @include vendor-prefix(order, 0, property, (-ms-, -webkit-, ''));
     flex-item-align: stretch;
     -ms-flex-item-align: stretch;
-    @include vendor-prefix(align-self, stretch, property, (-webkit-, ''));
+    @include vendor-prefix(align-self, stretch, property, (-webkit-));
 
     // if both, min width and width are set, width will win this conflict
     @if ($width == auto) {

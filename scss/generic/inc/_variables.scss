@@ -4,10 +4,10 @@ $scope: '.paternoster-room';
 $meters: (
 	roomY: 3, // = 100vh
 	eyeY: 	1.9,
-	roomZ: 1.8, // actually: how far removed is the viewer from the aperture
-	unitInnerX: .95,
-	unitInnerY: 2.25,
-	unitBoardThickness: .02,
+	roomZ: 1.8, // actually: how far removed is the viewer from the wall
+	cageInnerX: .95,
+	cageInnerY: 2.25,
+	cageBoardThickness: .02,
 	skirtingOverlap: .05,
 	upperSkirtingZ: .04,
 	apertureY: 2.7,
@@ -18,19 +18,20 @@ $meters: (
 );
 
 $meters: map-merge($meters, (
-	unitInnerZ: map-get($meters, 'unitInnerX'),
-	skirtingX: map-get($meters, 'unitInnerX') * .95, // as in 'a bit narrower than the unit'
-	skirtingY: map-get($meters, 'unitInnerX') * .9, // not quite square
-	lowerSkirtingZ: map-get($meters, 'upperSkirtingZ') - map-get($meters, 'unitBoardThickness'),
-	apertureX: map-get($meters, 'unitInnerX') + (2 * map-get($meters, 'unitBoardThickness'))
+	cageInnerZ: map-get($meters, 'cageInnerX'),
+	skirtingX: map-get($meters, 'cageInnerX') * .95, // as in 'a bit narrower than the cage'
+	skirtingY: map-get($meters, 'cageInnerX') * .9, // not quite square
+	lowerSkirtingZ: map-get($meters, 'upperSkirtingZ') - map-get($meters, 'cageBoardThickness'),
+	apertureX: map-get($meters, 'cageInnerX') + (2 * map-get($meters, 'cageBoardThickness'))
 ));
 
 $meters: map-merge($meters, (
 	apertureTop: map-get($meters, 'roomY') - map-get($meters, 'apertureY'),
 	ascLeftNudge: (map-get($meters, 'apertureDistance') / 2) + map-get($meters, 'apertureX'),
 	descLeftNudge: (map-get($meters, 'apertureDistance') / 2),
-	unitX: map-get($meters, 'apertureX'),
-	unitY: map-get($meters, 'unitInnerY') + (2 * map-get($meters, 'unitBoardThickness'))
+	cageOuterX: map-get($meters, 'apertureX'),
+	cageOuterY: map-get($meters, 'cageInnerY') + (2 * map-get($meters, 'cageBoardThickness')),
+	cageTopBottomBoardNudge: map-get($meters, 'skirtingY')
 ));
 
 $meters: map-merge($meters, (
@@ -46,4 +47,4 @@ $meters: map-merge($meters, (
 ));
 
 
-$vendorPrefixes: (-webkit-, '');
+$vendorPrefixes: (-webkit-);
