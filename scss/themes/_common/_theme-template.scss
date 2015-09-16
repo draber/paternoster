@@ -1,17 +1,17 @@
 /* Theme: #{$themeName} */
-.paternoster {
-	u {
+.paternoster-room {
+	q {
 		u.#{$themeId} {
-			@include background('cage-frame', 'image');
-			& > s {
-				@include background('cage-frame', 'shadow');
-			}
-			&::before {
-				@include background('top-frame', 'image');
-			}
-			&::after {
-				@include background('bottom-frame', 'image');
-			}
+			//@include background('cage-frame', 'image');
+			//& > s {
+			//	@include background('cage-frame', 'shadow');
+			//}
+			//&::before {
+			//	@include background('top-frame', 'image');
+			//}
+			//&::after {
+			//	@include background('bottom-frame', 'image');
+			//}
 
 			b {
 				&.right {

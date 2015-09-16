@@ -62,13 +62,33 @@ a, aside, b, i, ins, kbd, q, s, sup, sub, u {
 a, aside, kbd {
   position: absolute; }
 
+@-webkit-keyframes pnMoveUp {
+  0% {
+    margin-top: 0; }
+  100% {
+    margin-top: -130.33333vh; } }
+@keyframes pnMoveUp {
+  0% {
+    margin-top: 0; }
+  100% {
+    margin-top: -130.33333vh; } }
+@-webkit-keyframes pnMoveDown {
+  0% {
+    margin-top: 3.105; }
+  100% {
+    margin-top: 0; } }
+@keyframes pnMoveDown {
+  0% {
+    margin-top: 3.105; }
+  100% {
+    margin-top: 0; } }
 .paternoster-room {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
-  -webkit-perspective-origin: 50% 43.33333%;
-  perspective-origin: 50% 43.33333%;
+  -webkit-perspective-origin: 50% 36.66667%;
+  perspective-origin: 50% 36.66667%;
   -webkit-perspective: 250vh;
   perspective: 250vh;
   -webkit-transform-style: preserve-3d;
@@ -76,7 +96,7 @@ a, aside, kbd {
   -webkit-backface-visibility: visible;
   backface-visibility: visible; }
   .paternoster-room > .back {
-    background: transparent;
+    background: url(img/wallpaper.png);
     height: 100vh;
     width: 200vw;
     left: -50%;
@@ -107,97 +127,99 @@ a, aside, kbd {
     .paternoster-room kbd:nth-of-type(3) {
       width: 37.66667vh;
       left: calc(50vw - 37.66667vh); }
-
-.paternoster-room a {
-  width: 33vh;
-  height: 90vh;
-  top: 10.0vh;
-  left: calc(50% + 4.66667vh);
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-transform: translateZ(-60vh);
-  transform: translateZ(-60vh); }
-  .paternoster-room a:first-of-type {
-    left: calc(50% - 37.66667vh); }
-  .paternoster-room a s.top, .paternoster-room a s.bottom {
-    height: 6.66667vh; }
-  .paternoster-room a s.left, .paternoster-room a s.right {
-    width: 6.66667vh; }
-  .paternoster-room a s.top {
-    background: radial-gradient(ellipse farthest-corner at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 75%); }
-  .paternoster-room a s.right {
-    background: linear-gradient(-14deg, transparent 0%, transparent 6%, rgba(0, 0, 0, 0.43) 100%); }
-  .paternoster-room a s.left {
-    background: linear-gradient(14deg, transparent 0%, transparent 6%, rgba(0, 0, 0, 0.43) 100%); }
-
-@-webkit-keyframes pnMoveUp {
-  0% {
-    margin-top: 0; }
-  100% {
-    margin-top: -130.33333vh; } }
-@keyframes pnMoveUp {
-  0% {
-    margin-top: 0; }
-  100% {
-    margin-top: -130.33333vh; } }
-@-webkit-keyframes pnMoveDown {
-  0% {
-    margin-top: 3.105; }
-  100% {
-    margin-top: 0; } }
-@keyframes pnMoveDown {
-  0% {
-    margin-top: 3.105; }
-  100% {
-    margin-top: 0; } }
-.paternoster-room q {
-  -webkit-transform: translateZ(-6.66667vh);
-  transform: translateZ(-6.66667vh);
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  perspective: 1700px;
-  background-color: #444;
-  position: relative; }
-  .paternoster-room q u {
-    transform-style: preserve-3d; }
-    .paternoster-room q u:first-child {
+  .paternoster-room a {
+    width: 33vh;
+    height: 90vh;
+    top: 10.0vh;
+    left: calc(50% + 4.66667vh);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translateZ(-60vh);
+    transform: translateZ(-60vh); }
+    .paternoster-room a:first-of-type {
+      left: calc(50% - 37.66667vh); }
+    .paternoster-room a s.top, .paternoster-room a s.bottom {
+      height: 6.66667vh; }
+    .paternoster-room a s.left, .paternoster-room a s.right {
+      width: 6.66667vh; }
+    .paternoster-room a s.top {
+      background: radial-gradient(ellipse farthest-corner at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 75%); }
+    .paternoster-room a s.right {
+      background: linear-gradient(-14deg, transparent 0%, transparent 6%, rgba(0, 0, 0, 0.43) 100%); }
+    .paternoster-room a s.left {
+      background: linear-gradient(14deg, transparent 0%, transparent 6%, rgba(0, 0, 0, 0.43) 100%); }
+  .paternoster-room a:first-of-type q {
+    -webkit-perspective-origin: 90% 36.66667%;
+    perspective-origin: 90% 36.66667%;
+    -webkit-perspective: 250vh;
+    perspective: 250vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible; }
+    .paternoster-room a:first-of-type q u:first-of-type {
       animation: pnMoveUp 20s infinite linear; }
-  .paternoster-room q i {
+  .paternoster-room q {
+    -webkit-transform: translateZ(-6.66667vh);
+    transform: translateZ(-6.66667vh);
+    -webkit-perspective-origin: 10% 36.66667%;
+    perspective-origin: 10% 36.66667%;
+    -webkit-perspective: 250vh;
+    perspective: 250vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+    position: relative; }
+  .paternoster-room u {
+    transform-style: preserve-3d; }
+    .paternoster-room u:first-of-type {
+      animation: pnMoveDown 20s infinite linear; }
+  .paternoster-room i {
     width: 33vh;
     height: 76.33333vh;
     position: relative;
     transform-style: preserve-3d; }
-  .paternoster-room q sup, .paternoster-room q sub {
+  .paternoster-room sup, .paternoster-room sub {
     width: 30.08333vh;
     height: 28.5vh;
-    margin: auto; }
-  .paternoster-room q sup {
+    margin: auto;
+    background: url("themes/wood/img/top-bottom.jpg");
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5); }
+  .paternoster-room sup {
     border-radius: 5vh 5vh 0 0;
     margin-top: -1.66667vh;
     background-color: #666;
     -webkit-transform: translateZ(-1.33333vh);
     transform: translateZ(-1.33333vh); }
-  .paternoster-room q sub {
+  .paternoster-room sub {
     border-radius: 0 0 5vh 5vh;
     background-color: #999;
     -webkit-transform: translateZ(-0.66667vh);
     transform: translateZ(-0.66667vh); }
-  .paternoster-room q b.top, .paternoster-room q b.bottom {
+  .paternoster-room b.top, .paternoster-room b.bottom {
     height: 33vh; }
-  .paternoster-room q b.left, .paternoster-room q b.right {
+  .paternoster-room b.left, .paternoster-room b.right {
     width: 33vh; }
-  .paternoster-room q b.top {
+  .paternoster-room b.top {
     background: yellow; }
-  .paternoster-room q b.bottom {
+  .paternoster-room b.bottom {
     background: green; }
-  .paternoster-room q b.right {
+  .paternoster-room b.right {
     background: blue; }
-  .paternoster-room q b.left {
+  .paternoster-room b.left {
     background: red; }
-  .paternoster-room q b.back {
-    background: white;
+  .paternoster-room b.back {
+    background: url(themes/wood/img/front-back-sides.jpg);
     -webkit-transform: translateZ(-31.66667vh);
     transform: translateZ(-31.66667vh); }
+  .paternoster-room b s {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
 
 /*# sourceMappingURL=main.css.map */

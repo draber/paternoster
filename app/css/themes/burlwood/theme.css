@@ -1,31 +1,23 @@
 /* Theme: Burlwood */
-.paternoster u u.burlwood {
-  background:  url(img/front-back-sides.jpg) 0 0 / contain; }
-  .paternoster u u.burlwood > s {
-    background:  linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2)); }
-  .paternoster u u.burlwood::before {
-    background:  url(img/top-bottom.jpg) 0 0 / contain; }
-  .paternoster u u.burlwood::after {
-    background:  url(img/top-bottom.jpg) center bottom / contain; }
-  .paternoster u u.burlwood b.right {
-    background:  url(img/front-back-sides.jpg) 0 0 / cover; }
-    .paternoster u u.burlwood b.right s {
-      background:  linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent); }
-  .paternoster u u.burlwood b.left {
-    background:  url(img/front-back-sides.jpg) 0 0 / cover; }
-    .paternoster u u.burlwood b.left s {
-      background:  linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent); }
-  .paternoster u u.burlwood b.back {
-    background:  url(img/front-back-sides.jpg) 0 0 / cover; }
-    .paternoster u u.burlwood b.back s {
-      background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent); }
-  .paternoster u u.burlwood b.top {
-    background:  url(img/top-bottom.jpg) 0 0 / contain; }
-    .paternoster u u.burlwood b.top s {
-      background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)); }
-  .paternoster u u.burlwood b.bottom {
-    background:  url(img/top-bottom.jpg) 0 0 / contain; }
-    .paternoster u u.burlwood b.bottom s {
-      background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent); }
+.paternoster-room q u.burlwood b.right {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover; }
+  .paternoster-room q u.burlwood b.right s {
+    background:  linear-gradient(135deg, rgba(0, 0, 0, 0.68), transparent); }
+.paternoster-room q u.burlwood b.left {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover; }
+  .paternoster-room q u.burlwood b.left s {
+    background:  linear-gradient(-135deg, rgba(0, 0, 0, 0.68), transparent); }
+.paternoster-room q u.burlwood b.back {
+  background:  url(img/front-back-sides.jpg) 0 0 / cover; }
+  .paternoster-room q u.burlwood b.back s {
+    background:  linear-gradient(180deg, rgba(0, 0, 0, 0.68), transparent); }
+.paternoster-room q u.burlwood b.top {
+  background:  url(img/top-bottom.jpg) 0 0 / contain; }
+  .paternoster-room q u.burlwood b.top s {
+    background:  linear-gradient(0deg, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.2)); }
+.paternoster-room q u.burlwood b.bottom {
+  background:  url(img/top-bottom.jpg) 0 0 / contain; }
+  .paternoster-room q u.burlwood b.bottom s {
+    background:  linear-gradient(180deg, rgba(0, 0, 0, 0.2), transparent); }
 
 /*# sourceMappingURL=theme.css.map */

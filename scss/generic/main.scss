@@ -1,5 +1,177 @@
 @import 'inc/bootstrap';
-//@import 'inc/paternoster';
-@import 'inc/room';
-@import 'inc/wall';
-@import 'inc/lift';
+@import 'inc/base';
+@import 'inc/keyframes';
+
+.paternoster-room {
+	/// Walls
+
+	width: 100vw;
+	height: 100vh;
+	overflow:hidden;
+	position: relative;
+	@include perspective(50%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 250vh);
+
+	& > .back {
+		background: url(img/wallpaper.png);
+		height: 100vh;
+		width: 200vw;
+		left: -50%;
+		@include vendor-prefix(transform, translateZ(vh('roomZ', '-')), property, $vendorPrefixes);
+	}
+
+	& > .top, & > .bottom {
+		width: 200%;
+		left: -50%;
+	}
+
+	& > .top {
+		background: silver;
+		height: vh('roomZ');
+	}
+
+	& > .bottom {
+		background: url(img/floortile.png);
+		height: calc(#{vh('roomZ')} + #{vh('apertureZ')});
+	}
+
+	/// S'kirting Board
+	kbd {
+		bottom:0;
+		position:absolute;
+		background: blue;
+		height: vh('skirtingBoardHeight');
+		@include vendor-prefix(transform, translateZ(vh('roomZ', '-')), property, $vendorPrefixes);
+		&:nth-of-type(1) {
+			width: calc(50% - #{vh('skirtingBoard_1_Width')});
+			left: vh('skirtingBoard_1_Left');
+		}
+		&:nth-of-type(2) {
+			width: vh('skirtingBoard_2_Width');
+			left: calc(50vw - #{vh('skirtingBoard_2_LeftNudge')});
+		}
+		&:nth-of-type(3) {
+			width: vh('skirtingBoard_3_Width');
+			left: calc(50vw - #{vh('skirtingBoard_3_LeftNudge')});
+		}
+	}
+
+
+	/// Aperture
+	a {
+		width: vh('apertureX');
+		height: vh('apertureY');
+		top: vh('apertureTop');
+		left: calc(50% + #{vh('descLeftNudge')});
+		&:first-of-type {
+			left: calc(50% - #{vh('ascLeftNudge')});
+		}
+		@include vendor-prefix(transform-style, 'preserve-3d', property, $vendorPrefixes);
+		@include vendor-prefix(transform, translateZ(vh('roomZ', '-')), property, $vendorPrefixes);
+		s {
+			&.top, &.bottom {
+				height: vh('apertureZ')
+			}
+			&.left, &.right {
+				width: vh('apertureZ')
+			}
+			&.top {
+				background: radial-gradient(ellipse farthest-corner at center, black(.35) 0%, black(.40) 75%);
+			}
+			&.right {
+				background: linear-gradient(-14deg, transparent 0%, transparent 06%, black(.43) 100%);
+			}
+			&.left {
+				background: linear-gradient(14deg, transparent 0%, transparent 06%, black(.43) 100%);
+			}
+		}
+	}
+
+
+	/// Queue of cages
+	a:first-of-type {
+		q {
+			@include perspective(90%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 250vh);
+
+			u:first-of-type {
+				animation: pnMoveUp 20s infinite linear;
+			}
+		}
+	}
+
+	q {
+		@include vendor-prefix(transform, translateZ(vh('apertureZ', '-')), property, $vendorPrefixes);
+
+		@include perspective(10%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 250vh);
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		background: black;//url(themes/wood/img/front-back-sides.jpg);
+		position: relative;
+	}
+
+
+	/// Units (=cages + skirting)
+	u {
+		transform-style: preserve-3d;
+		&:first-of-type {
+			animation: pnMoveDown 20s infinite linear;
+		}
+	}
+
+	i {
+		width: vh('unitX');
+		height: vh('unitY');
+		position: relative;
+		transform-style: preserve-3d;
+	}
+	sup, sub {
+		width: vh('skirtingX');
+		height: vh('skirtingY');
+		margin: auto;
+
+		background: url("themes/wood/img/top-bottom.jpg") ;
+		box-shadow: 3px 3px 3px black(.5)
+	}
+	sup {
+		border-radius: vh('skirtingRadius') vh('skirtingRadius') 0 0;
+		margin-top: vh('skirtingOverlap', '-');
+		background-color: #666;
+		@include vendor-prefix(transform, translateZ(vh('upperSkirtingZ', '-')), property, $vendorPrefixes);
+	}
+	sub {
+		border-radius: 0 0 vh('skirtingRadius') vh('skirtingRadius');
+		background-color: #999;
+		@include vendor-prefix(transform, translateZ(vh('lowerSkirtingZ', '-')), property, $vendorPrefixes);
+	}
+
+	b {
+		&.top, &.bottom {
+			height: vh('unitX');
+		}
+		&.left, &.right {
+			width: vh('unitX');
+		}
+
+		&.top {
+			background: yellow;
+		}
+		&.bottom {
+			background: green;
+		}
+		&.right {
+			background: blue;
+		}
+		&.left {
+			background: red;
+		}
+		&.back {
+			background: url(themes/wood/img/front-back-sides.jpg);
+			@include vendor-prefix(transform, translateZ(vh('unitInnerZ', '-')), property, $vendorPrefixes);
+		}
+		s {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
