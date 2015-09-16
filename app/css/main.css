@@ -89,7 +89,7 @@ a, aside, kbd {
 }
 @-webkit-keyframes pnMoveDown {
   0% {
-    margin-top: 3.105;
+    margin-top: -130.33333vh;
   }
   100% {
     margin-top: 0;
@@ -97,7 +97,7 @@ a, aside, kbd {
 }
 @keyframes pnMoveDown {
   0% {
-    margin-top: 3.105;
+    margin-top: -130.33333vh;
   }
   100% {
     margin-top: 0;
@@ -200,7 +200,7 @@ a, aside, kbd {
   backface-visibility: visible;
 }
 .paternoster-room a:first-of-type q u:first-of-type {
-  margin-top: -200px;
+  animation: pnMoveUp 20s infinite linear;
 }
 .paternoster-room q {
   -webkit-transform: translateZ(-9.33333vh);
@@ -221,6 +221,9 @@ a, aside, kbd {
 }
 .paternoster-room u {
   transform-style: preserve-3d;
+}
+.paternoster-room u:first-of-type {
+  animation: pnMoveDown 20s infinite linear;
 }
 .paternoster-room u::before, .paternoster-room u::after {
   content: '';
