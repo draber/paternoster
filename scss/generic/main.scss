@@ -100,8 +100,7 @@
 		q {
 			@include perspective(90%, (100 - (m('eyeY') / m('roomY') * 100)) * 1%, 200vh);
 			u:first-of-type {
-				//animation: pnMoveUp 20s infinite linear;
-				margin-top: -200px;
+				animation: pnMoveUp 20s infinite linear;
 			}
 		}
 	}
@@ -121,7 +120,7 @@
 	u {
 		transform-style: preserve-3d;
 		&:first-of-type {
-			//animation: pnMoveDown 20s infinite linear;
+			animation: pnMoveDown 20s infinite linear;
 		}
 
 		/// cage material thickness, top + bottom
