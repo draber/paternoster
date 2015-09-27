@@ -24,14 +24,14 @@ require([
 
         // // just for fun
         // var boxes = [document.querySelector('.c'), document.querySelector('.a')];
-        // var themes = themeManager.getAll();
+        // var custom = themeManager.getAll();
         // var current = 0;
         // window.setInterval(function() {
         //     current++;
         //     if(current > 1){
         //         current = 0;
         //     }
-        //     var theme = themes[Math.floor(Math.random() * themes.length)];
+        //     var theme = custom[Math.floor(Math.random() * custom.length)];
         //     themeManager.set(theme, boxes[current]);
 
         // }, 3000);

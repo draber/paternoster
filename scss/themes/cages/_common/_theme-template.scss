@@ -1,0 +1,91 @@
+/* Theme: #{$themeName} */
+u[data-cage-theme="#{$themeId}"] {
+
+	// skirtings above/below cage
+	sup {
+		@include background('upper-skirting', 'image');
+		s {
+			@include background('upper-skirting', 'shadow');
+		}
+	}
+	sub {
+		@include background('lower-skirting', 'image');
+		s {
+			@include background('lower-skirting', 'shadow');
+		}
+	}
+
+	// cage upper/lower board, front face
+	&::before {
+		@include background('cage-upper-edge', 'image');
+	}
+
+	&::after {
+		@include background('cage-lower-edge', 'image');
+	}
+
+	// top/bottom board outside
+	& > .upside {
+		@include background('cage-upside', 'image');
+		s {
+			@include background('cage-upside', 'shadow');
+		}
+	}
+	& > .downside {
+		@include background('cage-downside', 'image');
+		s {
+			@include background('cage-downside', 'shadow');
+		}
+	}
+
+	i {
+		// cage left/right board, front face
+		&::before {
+			@include background('cage-left-edge', 'image');
+		}
+
+		&::after {
+			@include background('cage-right-edge', 'image');
+		}
+
+
+		// inner sides
+		& > .right {
+			@include background('right', 'image');
+			s {
+				@include background('right', 'shadow');
+			}
+		}
+		& > .left {
+			@include background('left', 'image');
+			s {
+				@include background('left', 'shadow');
+			}
+		}
+		& > .back {
+			@include background('back', 'image');
+			s {
+				@include background('back', 'shadow');
+			}
+		}
+		& > .front {
+			@include background('front', 'image');
+			s {
+				@include background('front', 'shadow');
+			}
+		}
+		& > .top {
+			@include background('top', 'image');
+			s {
+				@include background('top', 'shadow');
+			}
+		}
+		& > .bottom {
+			@include background('bottom', 'image');
+			s {
+				@include background('bottom', 'shadow');
+			}
+		}
+	}
+
+}

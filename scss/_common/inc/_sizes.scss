@@ -1,0 +1,45 @@
+// 2.20m for the paternoster plus .5m to the sealing
+$meters: (
+	roomY: 3, // = 100vh
+	eyeY: 	1.9,
+	roomZ: 1.2, // actually: how far removed is the viewer from the wall
+	cageInnerX: .95,
+	cageInnerY: 2.25,
+	cageBoardThickness: .035,
+	skirtingOverlap: .05,
+	upperSkirtingZ: .15,
+	apertureY: 2.7,
+	apertureZ: .32,
+	apertureDistance: .28,
+	skirtingRadius: .15,
+	baseBoardHeight: .12,
+	perspectiveZ: 7.0
+);
+
+$meters: map-merge($meters, (
+	cageInnerZ: map-get($meters, 'cageInnerX'),
+	skirtingX: map-get($meters, 'cageInnerX') * .95, // as in 'a bit narrower than the cage'
+	skirtingY: map-get($meters, 'cageInnerX') * .9, // not quite square
+	lowerSkirtingZ: map-get($meters, 'upperSkirtingZ') - map-get($meters, 'cageBoardThickness'),
+	apertureX: map-get($meters, 'cageInnerX') + (2 * map-get($meters, 'cageBoardThickness'))
+));
+
+$meters: map-merge($meters, (
+	apertureTop: map-get($meters, 'roomY') - map-get($meters, 'apertureY'),
+	ascLeftOffset: (map-get($meters, 'apertureDistance') / 2) + map-get($meters, 'apertureX'),
+	descLeftOffset: (map-get($meters, 'apertureDistance') / 2),
+	cageOuterX: map-get($meters, 'apertureX'),
+	cageOuterY: map-get($meters, 'cageInnerY') + (2 * map-get($meters, 'cageBoardThickness')),
+	cageOuterZ: map-get($meters, 'cageInnerZ') + map-get($meters, 'cageBoardThickness'),
+	cageTopBottomBoardOffset: map-get($meters, 'skirtingY')
+));
+
+$meters: map-merge($meters, (
+	baseBoardLargeWidth: map-get($meters, 'ascLeftOffset'),
+	baseBoardSmallWidth: map-get($meters, 'apertureDistance'),
+	baseBoardSmallOffset: map-get($meters, 'apertureDistance') / 2,
+));
+
+$meters: map-merge($meters, (
+	baseBoard_3_LeftOffset: map-get($meters, 'descLeftOffset') + map-get($meters, 'apertureX')
+));

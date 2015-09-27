@@ -1,0 +1,57 @@
+$topBottom: 'img/top-bottom.jpg';
+$frontBackSides: 'img/front-back-sides.jpg';
+
+$customSurfaces: (
+	images: (
+		top: (
+			image: $topBottom
+		),
+		right: (
+			image: $frontBackSides
+		),
+		bottom: (
+			image: $topBottom
+		),
+		left: (
+			image: $frontBackSides
+		),
+		back: (
+			image: $frontBackSides
+		),
+		front: (
+		),
+
+		// skirtings above/below cage
+		upper-skirting: (
+			image: 'img/skirtings.jpg'
+		),
+		lower-skirting: (
+			image: 'img/skirtings.jpg'
+		),
+
+		// cage upper/lower board, front face
+		cage-upper-edge: (
+			image: $topBottom
+		),
+		cage-lower-edge: (
+			image: $topBottom
+		),
+
+		// top/bottom board outside
+		cage-downside: (
+			image: $topBottom
+		),
+		cage-upside: (
+			image: $topBottom
+		),
+
+		// cage left/right board, front face
+		cage-left-edge: (
+			image: $frontBackSides
+		),
+		cage-right-edge: (
+			image: $frontBackSides
+		),
+	),
+	shadows: ()
+);

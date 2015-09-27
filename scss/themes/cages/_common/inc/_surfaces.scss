@@ -1,0 +1,102 @@
+// default setup for surfaces
+$topBottom: 'img/top-bottom.jpg';
+$frontBackSides: 'img/front-back-sides.jpg';
+
+$innerDarkTop: black(.46);
+$innerLightBottom: black(.3);
+
+$defaultSurfaces: (
+    images:(
+        top: (
+            image: $frontBackSides,
+			size: contain
+        ),
+        right: (
+            image: $frontBackSides,
+			size: cover
+        ),
+        bottom: (
+            image: $frontBackSides,
+			size: contain
+        ),
+        left: (
+            image: $frontBackSides,
+			size: cover
+        ),
+        back: (
+            image: $frontBackSides,
+			size: cover
+        ),
+        front: (
+        ),
+		////////////
+        upper-skirting: (
+            image: 'img/skirtings.jpg'
+        ),
+        lower-skirting: (
+            image: 'img/skirtings.jpg'
+        ),
+		cage-upper-edge: (
+			image: $topBottom
+		),
+		cage-lower-edge: (
+			image: $topBottom
+		),
+		cage-upside: (
+			image: $topBottom
+		),
+		cage-downside: (
+			image: $topBottom
+		),
+
+		// cage left/right board, front face
+		cage-left-edge: (
+			image: $topBottom
+		),
+		cage-right-edge: (
+			image: $topBottom
+		),
+
+		////////////////
+    ),
+    shadows: (
+        top: (
+            shadow: 'linear-gradient(0deg, #{$innerDarkTop}, #{$innerLightBottom})'
+        ),
+        right: (
+            shadow: 'linear-gradient(135deg, #{$innerDarkTop}, #{$innerLightBottom})'
+        ),
+        bottom: (
+            shadow: 'linear-gradient(180deg, #{$innerLightBottom}, transparent)'
+        ),
+        left: (
+            shadow: 'linear-gradient(-135deg, #{$innerDarkTop}, #{$innerLightBottom})'
+        ),
+        back: (
+            shadow: 'linear-gradient(180deg, #{white(.1)}, transparent)'
+        ),
+        front: (
+        ),
+		////////////
+		upper-skirting: (
+			shadow: 'linear-gradient(to bottom, #{black(.15)}, #{black(.15)})'
+		),
+		lower-skirting: (
+			shadow: 'linear-gradient(to bottom, #{black(.7)} 0%, #{black(.10)} 5%, #{black(.10)} 100%)'
+		),
+		cage-upper-edge: (
+			shadow:''
+		),
+		cage-lower-edge: (
+			shadow:''
+		),
+		cage-upside: (
+			shadow: 'linear-gradient(180deg, #{$innerLightBottom}, #{black(.6)})'
+		),
+		cage-downside: (
+			shadow: 'linear-gradient(0deg, #{$innerDarkTop}, #{black(.6)})'
+		),
+
+		////////////////
+    )
+);
