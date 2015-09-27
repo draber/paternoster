@@ -6,39 +6,42 @@
     <meta name="description" content="This is an example of a meta description. This will often show up in search results.">
     <link rel="icon" href="img/favicon.gif" type="image/gif">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/themes/wood/theme.css">
+    <link rel="stylesheet" href="css/themes/room/default/theme.css">
+    <link rel="stylesheet" href="css/themes/cages/default/theme.css">
 </head>
-<body class="paternoster-room">
+<body data-room-theme="default">
 
     <!-- sides -->
-    <aside class="top"></aside>
-    <aside class="back"></aside>
+    <aside class="top"><s></s></aside>
+    <aside class="back"><s></s></aside>
     <aside class="bottom"></aside>
 
-    <!-- s'kirting boards -->
-    <kbd></kbd>
-    <kbd></kbd>
-    <kbd></kbd>
+    <!-- skirting boards -->
+    <footer><s></s></footer>
+    <footer><s></s></footer>
+    <footer><s></s></footer>
 
     <!-- apertures -->
     <a>
 
         <!-- shadows -->
-        <s class="top"></s>
-        <s class="right"></s>
-        <s class="left"></s>
+        <b class="top"><s></s></b>
+        <b class="right"><s></s></b>
+        <b class="left"><s></s></b>
 
         <!-- queue of cages -->
-        <q>
+        <q class="asc">
             <!-- unit/cage -->
-            <u class="wood">
+            <u data-cage-theme="default">
 
                 <!-- upper skirting -->
                 <sup><s></s></sup>
 
+                <!-- upside of top board -->
+                <b class="top upside"><s></s></b>
+
                 <!-- inner part -->
                 <i>
-
                     <!-- boards + shadows -->
                     <b class="back"><s></s></b>
                     <b class="top"><s></s></b>
@@ -48,53 +51,60 @@
                     <b class="front"><s></s></b>
                 </i>
 
+                <!-- bottom side of top board -->
+                <b class="bottom downside"><s></s></b>
+
                 <!-- lower skirting -->
                 <sub><s></s></sub>
             </u>
-            <u class="wood">
+            <u data-cage-theme="default">
                 <sup></sup>
+                <b class="top upside"><s></s></b>
                 <i>
+                    <b class="back"><s></s></b>
                     <b class="top"><s></s></b>
                     <b class="right"><s></s></b>
                     <b class="bottom"><s></s></b>
                     <b class="left"><s></s></b>
-                    <b class="back"><s></s></b>
                     <b class="front"><s></s></b>
                 </i>
+                <b class="bottom downside"><s></s></b>
                 <sub><s></s></sub>
             </u>
         </q>
     </a>
 
     <a>
-        <s class="top"></s>
-        <s class="right"></s>
-        <s class="left"></s>
-        <q>
-
-            <u class="wood">
+        <b class="top"><s></s></b>
+        <b class="right"><s></s></b>
+        <b class="left"><s></s></b>
+        <q class="desc">
+            <u data-cage-theme="default">
                 <sup><s></s></sup>
+                <b class="top upside"><s></s></b>
                 <i>
+                    <b class="back"><s></s></b>
                     <b class="top"><s></s></b>
                     <b class="right"><s></s></b>
                     <b class="bottom"><s></s></b>
                     <b class="left"><s></s></b>
-                    <b class="back"><s></s></b>
                     <b class="front"><s></s></b>
                 </i>
+                <b class="bottom downside"><s></s></b>
                 <sub><s></s></sub>
             </u>
-
-            <u class="wood">
-                <sup></sup>
+            <u data-cage-theme="default">
+                <sup><s></s></sup>
+                <b class="top upside"><s></s></b>
                 <i>
+                    <b class="back"><s></s></b>
                     <b class="top"><s></s></b>
                     <b class="right"><s></s></b>
                     <b class="bottom"><s></s></b>
                     <b class="left"><s></s></b>
-                    <b class="back"><s></s></b>
                     <b class="front"><s></s></b>
                 </i>
+                <b class="bottom downside"><s></s></b>
                 <sub><s></s></sub>
             </u>
         </q>

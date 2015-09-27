@@ -1,6 +1,6 @@
 # Semantic conventions
 
-The usual semantic HTML make no sense on a website that contains no text. We took the freedom
+The usual semantic HTML makes no sense on a website that contains no text. We took the freedom
 to give new meaning to existing elements to create a suitable semantic context for this site.
 
 
@@ -11,9 +11,9 @@ to give new meaning to existing elements to create a suitable semantic context f
 | `<a>`      | aperture                |
 | `<aside>`  | a side                  |
 | `<b>`      | board, sides of a cage  |
+| `<footer>` | skirting board          |
 | `<i>`      | inner part of a cage    |
 | `<ins>`    | object inside in a cage |
-| `<kbd>`    | s'kirting board         |
 | `<q>`      | queue of cages          |
 | `<s>`      | shadow                  |
 | `<sup>`    | skirting above a cage   |

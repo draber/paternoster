@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAgBI,mCAAQ;ECwIX,UAAU,EAAE,0CAAa;EDtIrB,qCAAE;ICsIN,UAAU,EAAE,0DAAa;ADlItB,kCAAO;ECkIV,UAAU,EAAE,0CAAa;EDhIrB,oCAAE;ICgIN,UAAU,EAAE,2DAAa;AD5HtB,kCAAO;EC4HV,UAAU,EAAE,0CAAa;ED1HrB,oCAAE;IC0HN,UAAU,EAAE,0DAAa;ADhHtB,iCAAM;ECgHT,UAAU,EAAE,sCAAa;ED9GrB,mCAAE;IC8GN,UAAU,EAAE,+DAAa;AD1GtB,oCAAS;EC0GZ,UAAU,EAAE,wCAAa;EDxGrB,sCAAE;ICwGN,UAAU,EAAE,yDAAa",
-"sources": ["../../../../scss/themes/_common/_theme-template.scss","../../../../scss/themes/_common/inc/_background-functions.scss"],
-"names": [],
-"file": "theme.css"
-}

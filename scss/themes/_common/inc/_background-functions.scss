@@ -2,7 +2,7 @@
 /// linear-gradient is a blatant assumption of course
 /// @param {String} $resource image or shadow data with or without url/gradient
 /// @return {String} $resource wrapped in the correct function
-@function urlify($resource, $type) {
+@function urlifyBgImage($resource, $type) {
 	@if ($type == 'image') {
 		@if (str-index($resource, 'url') == null) {
 			@return 'url(#{$resource})';
@@ -39,10 +39,10 @@
 
 
 /// Get the shorthand either images or shadows
-/// @param {Map} $panel
+/// @param {Map} $surface
 /// @param {String} $type image|shadow
 /// @return {String} $shorthand
-@function getFragmentByType($panel, $type) {
+@function getFragmentByType($surface, $type) {
 
 	$orderedKeys: (
 		'repeat',
@@ -57,14 +57,14 @@
 	$items: ();
 
 	// single entity takes precedence over a multiple of the same
-	$single: map-get($panel, $type);
-	$multiple: map-get($panel, typeToPlural($type));
+	$single: map-get($surface, $type);
+	$multiple: map-get($surface, typeToPlural($type));
 	// create an image/shadow map from a single resource
 	@if (notIsEmpty($single)) {
 		$multiple: ();
 		$singleMap: (resource: $single);
 		@each $key in $orderedKeys {
-			$value: (#{$key}: map-get($panel, $key));
+			$value: (#{$key}: map-get($surface, $key));
 			$singleMap: map-merge($singleMap, $value);
 		}
 		$multiple: append($multiple, $singleMap);
@@ -74,7 +74,7 @@
 		@each $dataSet in $multiple {
 			$resource: map-get($dataSet, 'resource');
 			@if(notIsEmpty($resource)) {
-				$resource: urlify($resource, $type);
+				$resource: urlifyBgImage($resource, $type);
 
 				$position: map-get($dataSet, 'position');
 				$size: map-get($dataSet, 'size');
@@ -104,21 +104,37 @@
 }
 
 
-/// Setup a panel
-/// @param {Map} $panel
+@function getBgTemplate() {
+	@return (
+		shorthand: '',
+		color: '',
+		image: '',
+		repeat: '',
+		attachment: '',
+		position: '',
+		size: '',
+		origin: '',
+		clip: '',
+		shadow: ''
+	);
+}
+
+
+/// Setup a surface
+/// @param {Map} $surface
 /// @param {String} $type image|shadow
 /// @return {String} $shorthand
-@function getShorthand($panel, $type) {
+@function getBgShorthand($surface, $type) {
 
 	// Is there a shorthand already?
-	$shorthand: map-get($panel, 'shorthand');
+	$shorthand: map-get($surface, 'shorthand');
 	@if (notIsEmpty($shorthand)) {
 		@return $shorthand;
 	}
 
-	$shorthand: map-get($panel, 'color');
+	$shorthand: map-get($surface, 'color');
 
-	$fragment: getFragmentByType($panel, $type);
+	$fragment: getFragmentByType($surface, $type);
 	@if (notIsEmpty($fragment)) {
 		$shorthand: $shorthand + ' ' + $fragment;
 	}
@@ -135,20 +151,20 @@
 	$typePlural: typeToPlural($type);
 
 	// get the right layer
-	$panel: map-get($defaultPanels, $typePlural);
-	$panel: map-get($panel, $side);
+	$surface: map-get($defaultSurfaces, $typePlural);
+	$surface: map-get($surface, $side);
 
-	// merge custom panel
-	@if (map-has-key($customPanels, $typePlural)) {
-		$customPanels: map-get($customPanels, $typePlural);
-		@if (map-has-key($customPanels, $side)) {
-			$panel: map-merge($panel, map-get($customPanels, $side));
+	// merge custom surface
+	@if (map-has-key($customSurfaces, $typePlural)) {
+		$customSurfaces: map-get($customSurfaces, $typePlural);
+		@if (map-has-key($customSurfaces, $side)) {
+			$surface: map-merge($surface, map-get($customSurfaces, $side));
 		}
 	}
 
-	// merge default panel on skeleton
-	$panel: map-merge($panelSkeleton, $panel);
+	// merge default surface on skeleton
+	$surface: map-merge(getBgTemplate(), $surface);
 
-	$shorthand: getShorthand($panel, $type);
+	$shorthand: getBgShorthand($surface, $type);
 	background: #{$shorthand};
 }

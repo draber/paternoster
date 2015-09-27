@@ -12,7 +12,7 @@ html, body {
   content: none;
 }
 
-a, aside, b, i, ins, kbd, q, s, sup, sub, u {
+a, aside, b, footer, i, ins, kbd, q, s, sup, sub, u {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -67,7 +67,13 @@ a, aside, b, i, ins, kbd, q, s, sup, sub, u {
   height: 100%;
 }
 
-a, aside, kbd {
+a, aside, footer {
+  position: absolute;
+}
+
+s {
+  width: inherit;
+  height: inherit;
   position: absolute;
 }
 
@@ -103,7 +109,7 @@ a, aside, kbd {
     margin-top: 0;
   }
 }
-.paternoster-room {
+[data-room-theme] {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -117,202 +123,194 @@ a, aside, kbd {
   -webkit-backface-visibility: visible;
   backface-visibility: visible;
 }
-.paternoster-room > .back {
-  background: url(img/wallpaper.png);
+[data-room-theme] > .back {
   height: 100vh;
   width: 200vw;
   left: -50%;
   -webkit-transform: translateZ(-40vh);
   transform: translateZ(-40vh);
 }
-.paternoster-room > .top, .paternoster-room > .bottom {
+[data-room-theme] > .top, [data-room-theme] > .bottom {
   width: 200%;
   left: -50%;
 }
-.paternoster-room > .top {
+[data-room-theme] > .top {
   height: 40vh;
-  background: url("themes/wood/img/top-bottom.jpg");
 }
-.paternoster-room > .bottom {
-  background: url(img/floortile.png);
-  height: calc(40vh + 9.33333vh);
+[data-room-theme] > .bottom {
+  height: calc(40vh + 10.66667vh);
 }
-.paternoster-room kbd {
+[data-room-theme] footer {
   bottom: 0;
   position: absolute;
   height: 4vh;
   -webkit-transform: translateZ(-40vh);
   transform: translateZ(-40vh);
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3) 0%, transparent 19%, transparent 100%), #845E45 url("themes/wood/img/top-bottom.jpg") repeat-x;
-  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.35);
 }
-.paternoster-room kbd:nth-of-type(1) {
+[data-room-theme] footer:nth-of-type(1) {
   width: calc(100vw - 38.66667vh);
   left: -50vw;
 }
-.paternoster-room kbd:nth-of-type(2) {
+[data-room-theme] footer:nth-of-type(2) {
   width: 9.33333vh;
   left: calc(50vw - 4.66667vh);
 }
-.paternoster-room kbd:nth-of-type(3) {
+[data-room-theme] footer:nth-of-type(3) {
   width: calc(100vw - 38.66667vh);
   right: -50vw;
 }
-.paternoster-room a {
+[data-room-theme] a {
   width: 34vh;
   height: 90vh;
   top: 10.0vh;
   left: calc(50% + 4.66667vh);
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-bottom: none;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transform: translateZ(-40vh);
   transform: translateZ(-40vh);
 }
-.paternoster-room a:first-of-type {
+[data-room-theme] a:first-of-type {
   left: calc(50% - 38.66667vh);
 }
-.paternoster-room a s.top, .paternoster-room a s.bottom {
-  height: 9.33333vh;
+[data-room-theme] a > .top, [data-room-theme] a > .bottom {
+  height: 10.66667vh;
 }
-.paternoster-room a s.left, .paternoster-room a s.right {
-  width: 9.33333vh;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+[data-room-theme] a > .left, [data-room-theme] a > .right {
+  width: 10.66667vh;
 }
-.paternoster-room a s.top {
-  background: radial-gradient(ellipse farthest-corner at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.4) 75%);
-}
-.paternoster-room a s.right {
-  background: linear-gradient(-14deg, transparent 0%, transparent 6%, rgba(0, 0, 0, 0.43) 100%);
-}
-.paternoster-room a s.left {
-  background: linear-gradient(14deg, transparent 0%, transparent 6%, rgba(0, 0, 0, 0.43) 100%);
-}
-.paternoster-room a:first-of-type q {
-  -webkit-perspective-origin: 90% 36.66667%;
-  perspective-origin: 90% 36.66667%;
-  -webkit-perspective: 200vh;
-  perspective: 200vh;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
-}
-.paternoster-room a:first-of-type q u:first-of-type {
-  animation: pnMoveUp 20s infinite linear;
-}
-.paternoster-room q {
-  -webkit-transform: translateZ(-9.33333vh);
-  transform: translateZ(-9.33333vh);
-  -webkit-perspective-origin: 10% 36.66667%;
-  perspective-origin: 10% 36.66667%;
-  -webkit-perspective: 200vh;
-  perspective: 200vh;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  -webkit-backface-visibility: visible;
-  backface-visibility: visible;
+
+q {
+  -webkit-transform: translateZ(-10.66667vh);
+  transform: translateZ(-10.66667vh);
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: saddlebrown;
+  background: rgba(0, 0, 0, 0.8);
   position: relative;
 }
-.paternoster-room u {
+q.asc {
+  -webkit-perspective-origin: 90% 36.66667%;
+  perspective-origin: 90% 36.66667%;
+  -webkit-perspective: 233.33333vh;
+  perspective: 233.33333vh;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+q.desc {
+  -webkit-perspective-origin: 10% 36.66667%;
+  perspective-origin: 10% 36.66667%;
+  -webkit-perspective: 233.33333vh;
+  perspective: 233.33333vh;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+u {
   transform-style: preserve-3d;
 }
-.paternoster-room u:first-of-type {
-  animation: pnMoveDown 20s infinite linear;
-}
-.paternoster-room u::before, .paternoster-room u::after {
+u::before, u::after {
   content: '';
   position: absolute;
   width: 31.66667vh;
   height: 1.16667vh;
   left: 1.16667vh;
-  background: blueviolet;
 }
-.paternoster-room u::before {
+u::before {
   top: 28.5vh;
 }
-.paternoster-room u::after {
+u::after {
   bottom: 28.5vh;
 }
-.paternoster-room i {
+u > .upside, u > .downside {
+  height: 32.83333vh;
+  width: 34vh;
+}
+u > .upside {
+  top: 28.5vh;
+}
+u > .downside {
+  bottom: 28.5vh;
+}
+u i {
   width: 31.66667vh;
   height: 75vh;
   position: relative;
   transform-style: preserve-3d;
   margin: 1.16667vh;
 }
-.paternoster-room i::before, .paternoster-room i::after {
+u i::before, u i::after {
   content: '';
   position: absolute;
   height: 77.33333vh;
   width: 1.16667vh;
   top: -1.16667vh;
-  background: greenyellow;
 }
-.paternoster-room i::before {
+u i::before {
   left: -1.16667vh;
 }
-.paternoster-room i::after {
+u i::after {
   right: -1.16667vh;
 }
-.paternoster-room b.top, .paternoster-room b.bottom {
+u i > .top, u i > .bottom {
   height: 31.66667vh;
   width: 31.66667vh;
 }
-.paternoster-room b.left, .paternoster-room b.right {
+u i > .left, u i > .right {
   width: 31.66667vh;
   height: 75vh;
 }
-.paternoster-room b.back, .paternoster-room b.front {
+u i > .back, u i > .front {
   width: 31.66667vh;
   height: 75vh;
 }
-.paternoster-room b.top {
-  background: yellow;
-}
-.paternoster-room b.bottom {
-  background: green;
-}
-.paternoster-room b.right {
-  background: blue;
-}
-.paternoster-room b.left {
-  background: red;
-}
-.paternoster-room b.back {
-  background: url(themes/wood/img/front-back-sides.jpg);
+u i > .back {
   -webkit-transform: translateZ(-31.66667vh);
   transform: translateZ(-31.66667vh);
 }
-.paternoster-room b s {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.paternoster-room sup, .paternoster-room sub {
+u sup, u sub {
   width: 30.08333vh;
   height: 28.5vh;
   margin: auto;
-  background: url("themes/wood/img/top-bottom.jpg");
-  box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.45);
+  transform-style: preserve-3d;
 }
-.paternoster-room sup {
+u sup::before, u sub::before {
+  content: '';
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
+  position: absolute;
+  display: block;
+  left: -3px;
+  -webkit-transform: translateZ(-1.16667vh);
+  transform: translateZ(-1.16667vh);
+  background: inherit;
+  box-shadow: inset 6px 0px 5px 0px rgba(0, 0, 0, 0.46);
+}
+u sup s, u sub s {
+  border-radius: inherit;
+}
+u sup {
   border-radius: 5vh 5vh 0 0;
   margin-top: -1.66667vh;
-  background-color: #666;
-  -webkit-transform: translateZ(-1.33333vh);
-  transform: translateZ(-1.33333vh);
+  -webkit-transform: translateZ(-5vh);
+  transform: translateZ(-5vh);
 }
-.paternoster-room sub {
+u sub {
   border-radius: 0 0 5vh 5vh;
-  background-color: #999;
-  -webkit-transform: translateZ(-0.16667vh);
-  transform: translateZ(-0.16667vh);
+  -webkit-transform: translateZ(-3.83333vh);
+  transform: translateZ(-3.83333vh);
+  box-shadow: 0 5px 3px 0 rgba(0, 0, 0, 0.45);
+}
+
+.asc u sub::before, .asc u sup::before {
+  left: auto;
+  box-shadow: inset -6px 0px 5px 0px rgba(0, 0, 0, 0.46);
+  right: -3px;
 }
 
 /*# sourceMappingURL=main.css.map */

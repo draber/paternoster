@@ -1,0 +1,112 @@
+@mixin vendor-prefix($property, $value, $whatToPrefix: property, $prefixes: (-webkit-, -moz-, -ms-, -o-)) {
+    $prefixes: append($prefixes, '');
+    @if $whatToPrefix == 'property' {
+        @each $prefix in $prefixes {
+            #{$prefix + $property}: #{$value};
+        }
+    } @else if $whatToPrefix == 'value' {
+        @each $prefix in $prefixes {
+            #{$property}: #{$prefix + $value};
+        }
+    }
+}
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: ($height / $width) * 100%;
+    }
+    & > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+
+@mixin wall-transform($side) {
+	$rotateFn: rotateX;
+	$rotation: 90;
+	@if($side == 'right' or $side == 'left') {
+		$rotateFn: rotateY;
+	}
+	@if($side == 'right' or $side == 'top') {
+		$rotation: 270;
+	}
+	@include vendor-prefix(transform-origin, #{$side} center, property, $vendorPrefixes);
+	@include vendor-prefix(transform, #{$rotateFn + '(' + $rotation + 'deg)'}, property, $vendorPrefixes);
+}
+
+@mixin perspective($vertical: 50%, $horizontal: 40%, $distance: 150vh){
+	@include vendor-prefix(perspective-origin, $vertical $horizontal, property, $vendorPrefixes);
+	@include vendor-prefix(perspective, $distance, property, $vendorPrefixes);
+	@include vendor-prefix(transform-style, preserve-3d, property, $vendorPrefixes);
+	@include vendor-prefix(backface-visibility, visible, property, $vendorPrefixes);
+}
+
+
+/// Computes the ratio of two sizes in percent or similar units
+/// @param {Number} $term as absolute value (think px or cm...)
+/// @param {Number} $referenceTerm in same unit
+/// @param {String|Number} $unit, default % but vh or vw make also sense. $unit:null returns number
+@function proportion($term, $referenceTerm, $unit: '%') {
+    $value: $term * 100 / $referenceTerm;
+	@if($unit == null) {
+		@return $value;
+	}
+    @return $value * 1#{$unit};
+}
+
+@function vh($key, $sign: '+') {
+    $term: map-get($meters, $key);
+	@if($sign == '-') {
+		$term: $term * -1;
+	}
+	@return proportion($term, map-get($meters, 'roomY'), 'vh');
+}
+
+@function m($key) {
+	@return map-get($meters, $key);
+}
+
+@function black($alpha: 1) {
+    @return rgba(0, 0, 0, $alpha);
+}
+
+@function white($alpha: 1) {
+    @return rgba(255, 255, 255, $alpha);
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content
+    }
+;
+    @keyframes #{$name} {
+        @content
+    }
+;
+}
+
+@function list-implode($separator, $list) {
+    $str: '';
+    $len: length($list);
+
+    @each $item in $list {
+
+        $i: index($list, $item);
+        @if ($item != '') {
+            $str: #{$str + $item};
+
+            @if ($i < $len) {
+                $str: #{$str + $separator};
+            }
+        }
+    }
+    @return $str;
+}

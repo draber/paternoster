@@ -1,0 +1,55 @@
+$wallpaperPattern: 'img/wallpaper.png';
+$wallpaperColor: '#e0d5a7';
+
+$customSurfaces: (
+	images: (
+		top: (
+			image: 'img/ceiling-tile.png',
+			color: rgba(#e9b661, .15)
+		),
+		bottom: (
+			image: 'img/floortile.png'
+		),
+		back: (
+			image: $wallpaperPattern,
+			color: $wallpaperColor
+		),
+		aperture-left: (
+			image: $wallpaperPattern,
+			color: $wallpaperColor
+		),
+		aperture-top: (
+			image: $wallpaperPattern,
+			color: $wallpaperColor
+		),
+		aperture-right: (
+			image: $wallpaperPattern,
+			color: $wallpaperColor
+		),
+		base-board: (
+			color: #bba88f
+		),
+	),
+	shadows: (
+		top: (
+			shadow: 'linear-gradient(to bottom, #{black(.1)} 0%, #{black(.1)} 100%)',
+		),
+		bottom: (
+		),
+		back: (
+			shadow: 'linear-gradient(to bottom, #{black(.25)} 0%, #{black(.1)} .5%, transparent 74.5%, #{black(.1)} 100%)',
+		),
+		aperture-left: (
+			shadow: 'linear-gradient(to right, #{black(.2)} 0%, #{black(.3)} 100%)'
+		),
+		aperture-top: (
+			shadow: 'radial-gradient(ellipse farthest-corner at center, #{black(.35)} 0%, #{black(.40)} 75%)'
+		),
+		aperture-right: (
+			shadow: 'linear-gradient(to left, #{black(.2)} 0%, #{black(.3)} 100%)'
+		),
+		base-board: (
+			shadow: 'linear-gradient(to bottom, #{white(.3)} 0%, transparent 19%, transparent 100%)'
+		),
+	)
+);
